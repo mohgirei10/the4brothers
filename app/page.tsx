@@ -9,12 +9,12 @@ import {
 } from "react-icons/si";
 
 const socialLinks = [
-  { id: 1, name: "Instagram", icon: <SiInstagram />, link: "https://instagram.com/@the4brotherstransport", color: "#E1306C" },
-  { id: 3, name: "Facebook", icon: <SiFacebook />, link: "https://facebook.com/the4brotherstransport", color: "#1877F2" },
+  { id: 1, name: "Instagram", icon: <SiInstagram />, link: "https://instagram.com/@the4brotherstransport", color: "rgb(225, 48, 108)" },
+  { id: 3, name: "Facebook", icon: <SiFacebook />, link: "https://facebook.com/the4brotherstransport", color: "rgb(24, 119, 242)" },
   { id: 4, name: "WhatsApp", icon: <SiWhatsapp/>, link: "https://wa.me/2348146007875?text=Hello%204Brothers", color: 'rgb(59, 253, 0)' },
-  { id: 5, name: "TickTock", icon: <SiTiktok />, link: "https://ticktock.com/@the4brotherstransport", color: "#FFFFFF" },
+  { id: 5, name: "TickTock", icon: <SiTiktok />, link: "https://ticktock.com/@the4brotherstransport", color: "rgb(1, 1, 1)" },
 ];
-
+import ImageCarousel from './components/ImageCarousel';
 import { motion, Variants } from 'framer-motion';
 import { 
   Truck, Package, MapPin, Clock, ShieldCheck, 
@@ -23,8 +23,10 @@ import {
   X
 } from 'lucide-react';
 import React from "react";
-
-
+import Link from 'next/link';
+import BookingForm from "./components/BookingForm";
+import FleetGallery from "./components/FleetGallery";
+import ShipmentTracker from "./components/ShipmentTracker";
 
 const PremiumLogisticsUI = () => {
   // Animation Variants
@@ -57,72 +59,20 @@ const itemVariants: Variants = {
     { t: "Door-to-Door", i: MapPin, c: "bg-blue-900 text-white", desc: "End-to-end logistics from your doorstep to theirs." }
   ];
 
+
 const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
 const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
 
   return (
-    <div className="min-h-screen bg-[#FAFBFF] font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-700 overflow-x-hidden">
+  <div className="min-h-screen bg-[#FAFBFF] font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-700 overflow-x-hidden">
       
-      {/* 1. DYNAMIC NAVIGATION */}
-<nav className="fixed w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/50">
-  <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-    <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-      <img src="logo.png" alt="Logo" className="h-10 md:h-14 w-auto object-contain" />
-    </motion.div>
-
-    {/* DESKTOP NAV (Hidden on mobile) */}
-    <div className="hidden lg:flex items-center gap-10">
-      {['Home','Services', 'About'].map((item) => (
-        <a key={item} href={`#${item.toLowerCase()}`} className="text-xs font-bold text-blue-600 hover:text-blue-900 uppercase tracking-widest transition-colors">{item}</a>
-      ))}
-      <button className="bg-red-600 text-white px-8 py-3 rounded-full font-black text-sm shadow-xl shadow-red-200">BOOK NOW</button>
-    </div>
-
-    {/* MOBILE HAMBURGER (Hidden on desktop) */}
-    <div className="lg:hidden">
-      <button onClick={toggleMenu} className="p-2 text-blue-950">
-        {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-      </button>
-    </div>
-  </div>
-
-  {/* MOBILE MENU OVERLAY */}
-  <motion.div 
-    initial={{ height: 0, opacity: 0 }}
-    animate={{ height: isMenuOpen ? 'auto' : 0, opacity: isMenuOpen ? 1 : 0 }}
-    className="lg:hidden bg-white border-b border-slate-100 overflow-hidden"
-  >
-    <div className="flex flex-col p-6 gap-6">
-      {['Home', 'Services', 'About'].map((item) => (
-        <a 
-          key={item} 
-          href={`#${item.toLowerCase()}`} 
-          onClick={() => setIsMenuOpen(false)} // Close menu on click
-          className="text-lg font-bold text-slate-700 hover:text-blue-600"
-        >
-          {item}
-        </a>
-      ))}
-       <button 
-       onClick={() => {
-            const phoneNumber = "2348146007875"; // International format without the '+'
-            const message = encodeURIComponent("Hello 4Brothers! I'd like to inquire about a shipment.");
-           window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-  }}
-             className="bg-red-600 hover:bg-blue-700 hover:cursor-pointer text-white px-8 py-3 rounded-full font-black text-sm transition-all transform hover:scale-105 active:scale-95 shadow-xl shadow-red-200 ">
-              BOOK
-            </button>
-    </div>
-  </motion.div>
-</nav>
-
       {/* 2. HERO SECTION WITH PATTERNED BACKGROUND */}
       <section id="home" className="relative pt-32 pb-24 overflow-hidden">
         {/* Background Decorative Elements */}
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[40px_40px] opacity-25" />
-        <div className="absolute top-0 right-0 -z-10 w-[600px] h-150 bg-blue-100/40 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
+        <div className="absolute top-0 right-0 -z-10 w-15050 bg-blue-100/40 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
         
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
           <motion.div initial="hidden" animate="visible" variants={containerVariants}>
@@ -168,12 +118,8 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
             transition={{ duration: 1, ease: "easeOut" }}
             className="relative"
           >
-            <div className="rounded-[60px] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border-[12px] border-white relative z-10">
-              <img 
-                src="hero.png" 
-                alt="4Brothers Logistics" 
-                className="w-full h-auto scale-105 hover:scale-110 transition-transform duration-700"
-              />
+            <div className="rounded-[60px] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border-12 border-red-600 relative z-10">
+                  <ImageCarousel />
             </div>
             
             {/* Floating Trust Badge */}
@@ -189,6 +135,9 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
           </motion.div>
         </div>
       </section>
+       <ShipmentTracker />
+       <FleetGallery />
+       <BookingForm />
 
       {/* 3. BENTO SERVICES GRID */}
       <section id="services" className="py-32 bg-white">
@@ -243,8 +192,10 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
         </div>
       </section>
 
-{/* 4. ABOUT SECTION - THE STORY & TRUST */}
-<section id="about" className="py-32 relative overflow-hidden bg-blue-950">
+      
+
+      {/* 4. ABOUT SECTION - THE STORY & TRUST */}
+      <section id="about" className="py-32 relative overflow-hidden bg-blue-950">
   <div className="max-w-7xl mx-auto px-6">
     <div className="grid lg:grid-cols-2 gap-20 items-center">
       
@@ -255,7 +206,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
         viewport={{ once: true }}
         className="relative"
       >
-       <div className="max-w-7xl mx-auto rounded-[40px] overflow-hidden shadow-2xl border-8 border-red-600 h-[400px]">
+       <div className="max-w-7xl mx-auto rounded-[40px] overflow-hidden shadow-2xl border-8 border-red-600 h-100">
   <iframe 
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126093.84155106297!2d7.36195438671875!3d9.07000570000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0baf7ad48fd5%3A0x53d10f2747d97488!2sAbuja%2C%20Federal%20Capital%20Territory!5e0!3m2!1sen!2sng!4v1710555000000!5m2!1sen!2sng" 
     width="100%" 
@@ -273,7 +224,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
         {/* Floating Stat Card */}
         <motion.div 
           whileHover={{ scale: 1.05 }}
-          className="absolute -bottom-6 -right-6 bg-white p-8 rounded-3xl shadow-xl border border-slate-100 z-20 max-w-[240px]"
+          className="absolute -bottom-6 -right-6 bg-white p-8 rounded-3xl shadow-xl border border-slate-100 z-20 max-w-60"
         >
           <p className="text-5xl font-black text-blue-900 mb-2">36</p>
           <p className="text-xs font-bold text-slate-400 uppercase tracking-widest leading-tight">
@@ -321,10 +272,10 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     </div>
   </div>
-</section>
+      </section>
 
-{/* 5. CONTACT & INQUIRY SECTION */}
-<section id="contact" className="py-32 bg-white">
+      {/* 5. CONTACT & INQUIRY SECTION */}
+      <section id="contact" className="py-32 bg-white">
   <div className="max-w-7xl mx-auto px-6">
     <div className="grid lg:grid-cols-2 gap-16 items-start">
       
@@ -419,59 +370,8 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     </div>
   </div>
-</section>
+      </section>
 
-      {/* 6. PREMIUM FOOTER / CTA */}
-      <footer className="px-6 pb-24">
-        <div className="max-w-7xl mx-auto bg-blue-950 rounded-[60px] p-12 lg:p-24 relative overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-0 w-100 h-100 bg-red-600 rounded-full blur-[150px] opacity-20 -translate-y-1/2 translate-x-1/2" />
-          
-          <div className="relative z-10 flex flex-col items-center text-center">
-            <img src="logo.png" alt="Logo" className="h-16 mb-12" />
-            <h2 className="text-4xl md:text-7xl font-black text-white mb-10 leading-tight">
-              Ship smarter with <span className="text-red-500 underline decoration-8 uppercase underline-offset-8">The4Brothers</span>
-            </h2>
-            
-<div className="flex flex-wrap gap-6 justify-center py-10">
-      {socialLinks.map((social) => (
-        <motion.a
-          key={social.id}
-          href={social.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ 
-            scale: 1.2, 
-            y: -5,
-            color: social.color,
-            filter: `drop-shadow(0 0 12px ${social.color}44)` 
-          }}
-          className="text-white/40 text-3xl transition-all duration-300"
-        >
-          {social.icon}
-        </motion.a>
-      ))}
-    </div>
-
-            <div className="flex flex-wrap justify-center gap-6">
-              <button 
-  onClick={() => {
-    const phoneNumber = "2348146007875"; // International format without the '+'
-    const message = encodeURIComponent("Hello 4Brothers! I'd like to inquire about a shipment.");
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-  }}
-  
-  className="bg-red-600 hover:bg-red-900 text-white px-12 py-5 hover:cursor-pointer rounded-full font-black text-lg uppercase transition-all transform hover:scale-105 active:scale-95 shadow-xl shadow-red-300 flex items-center gap-2"
->
-  <Phone size={24} />Contact Us
-</button>
-            </div>
-            
-            <p className="mt-20 text-zinc-500 font-black text-[12px] uppercase tracking-[0.5em] border-t border-white/10 pt-12 w-full">
-              © {new Date().getFullYear()} 4Brothers Transport & Logistics Ltd. | Abuja, Nigeria
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
