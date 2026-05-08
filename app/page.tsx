@@ -57,7 +57,7 @@ const itemVariants: Variants = {
     { t: "Interstate Delivery", i: Globe, c: "bg-red-50 text-red-600", desc: "Reliable freight movement across all 36 Nigerian states." },
     { t: "Relocation", i: Truck, c: "bg-slate-900 text-white", desc: "Expert home and office moving with zero-damage guarantee." },
     { t: "Warehousing", i: Warehouse, c: "bg-blue-50 text-blue-600", desc: "Safe storage solutions with real-time inventory tracking." },
-    { t: "Express Delivery", i: Zap, c: "bg-red-50 text-red-600", desc: "Priority shipments delivered within the shortest possible time." },
+    { t: "Express Delivery", i: Zap, c: "bg-red-50 text-red-600", desc: "Priority packages delivered within the shortest possible time." },
     { t: "Door-to-Door", i: MapPin, c: "bg-blue-900 text-white", desc: "End-to-end logistics from your doorstep to theirs." }
   ];
 
@@ -101,7 +101,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
                  <motion.button 
               onClick={() => {
               const phoneNumber = "2348146007875"; // International format without the '+'
-              const message = encodeURIComponent("Hello 4Brothers! I'd like to inquire about a shipment.");
+              const message = encodeURIComponent("Hello 4Brothers! I'd like to inquire about a delivery.");
               window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent("Hello 4Brothers, I'm interested in your logistics services and would like to get a quote.")}`, '_blank');
   }}
             whileHover={{ scale: 1.02 }}
@@ -345,7 +345,7 @@ Contact Us  </span>
           Get in Touch
         </motion.span>
         <motion.h2 variants={itemVariants} className="text-5xl font-black text-blue-950 mb-8 tracking-tighter">
-          Ready to start <br/> your shipment?
+         <span className="text-red-600">4</span>Brothers offers a <span className="text-red-600">reliable</span>,  <span className="text-red-600">fast</span>, <br /> and <span className="text-red-600">budget-friendly</span> services.
         </motion.h2>
         <motion.p variants={itemVariants} className="text-lg text-slate-500 font-medium mb-12 max-w-md">
           Have a question about our rates or need a custom logistics plan? Our team is standing by to help.
@@ -410,11 +410,11 @@ Contact Us  </span>
 
           <div className="space-y-2">
             <label className="text-xs font-black text-white uppercase tracking-widest ml-1">Your Message</label>
-            <textarea rows={4} placeholder="Tell us about your shipment..." className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 focus:bg-white/10 transition-all font-medium resize-none"></textarea>
+            <textarea rows={4} placeholder="Tell us about your package..." className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 focus:bg-white/10 transition-all font-medium resize-none"></textarea>
           </div>
 
      <a 
-  href="mailto:info@4brotherslogistics.com?subject=Inquiry"
+  href="mailto:4brotherstransportandlogistic@gmail.com?subject=Inquiry"
   className="mx-auto flex w-fit items-center gap-5 rounded-xl bg-red-600 px-8 py-4 mb-8 shadow-sm  transition-colors group"
 >
   <Mail className="text-slate-100 group-hover:scale-110 transition-transform" size={18} />

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus, HelpCircle, MessageCircle } from 'lucide-react';
+import Link from 'next/link';
 
 const faqs = [
   {
@@ -18,7 +19,7 @@ const faqs = [
     answer: "Yes. 4Brothers provides Goods in Transit (GIT) insurance for all shipments, ensuring your items are protected against unforeseen circumstances from pickup to delivery."
   },
   {
-    question: "How do I track my shipment?",
+    question: "How do I track my package?",
     answer: "Once your booking is confirmed, you receive a unique tracking ID. You can use our on-site tracking tool or contact our 24/7 support line for real-time updates."
   },
   {
@@ -59,21 +60,16 @@ const FAQItem = ({ question, answer, isOpen, onClick }: any) => {
   );
 };
 
+// Inside your FAQ.tsx
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-24 bg-white">
+    // Add scroll-mt-24 so the fixed navbar doesn't cover the title
+    <section id="faqs" className="py-32 bg-white scroll-mt-24"> 
       <div className="max-w-4xl mx-auto px-6">
-        <div className="flex items-center gap-3 mb-4 justify-center md:justify-start">
-          <HelpCircle className="text-red-600" size={20} />
-          <span className="text-red-600 font-black text-xs uppercase tracking-[0.4em]">Information Hub</span>
-        </div>
+        {/* ... rest of your FAQ code (HelpCircle, h2, map, etc.) ... */}
         
-        <h2 className="text-4xl md:text-5xl font-black text-blue-950 mb-12 text-center md:text-left">
-          Common Questions.
-        </h2>
-
         <div className="space-y-2">
           {faqs.map((faq, index) => (
             <FAQItem
@@ -86,27 +82,15 @@ const FAQ = () => {
           ))}
         </div>
 
-        {/* CTA in FAQ */}
-        <div className="mt-16 p-8 bg-slate-50 rounded-4xl border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h4 className="text-xl font-bold text-blue-950">Still have questions?</h4>
-            <p className="text-slate-500 font-medium">We're here to help you move with peace of mind.</p>
-          </div>
-          <button>
-            <a 
-  href={`https://wa.me/2348146007875?text=${encodeURIComponent("I need assistance.")}`}
-  target="_blank"
-  className="mx-auto flex w-fit items-center gap-3 rounded-full border border-slate-200 px-6 py-3 mb-8 shadow-sm hover:border-green-400 transition-colors group"
->
-  <MessageCircle className="text-blue-600 group-hover:scale-110 transition-transform" size={18} />
-  <span className="text-sm font-bold uppercase tracking-tight text-slate-600">
-Contact Support  </span>
-</a>
-          </button>
+        {/* Support CTA */}
+        <div className="mt-16 p-10 bg-slate-50 rounded-[40px] border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
+           {/* ... your CTA content ... */}
         </div>
       </div>
     </section>
   );
 };
+
+
 
 export default FAQ;

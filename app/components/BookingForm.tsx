@@ -15,7 +15,7 @@ const BookingForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const phoneNumber = "2348146007875";
-    const message = `*NEW BOOKING REQUEST*%0A%0A*Pickup:* ${formData.pickup}%0A*Drop-off:* ${formData.dropoff}%0A*Package Type:* ${formData.type}%0A*Est. Weight:* ${formData.weight}kg%0A%0AHello 4Brothers, I would like to get a quote for this shipment.`;
+    const message = `*NEW BOOKING REQUEST*%0A%0A*Pickup:* ${formData.pickup}%0A*Drop-off:* ${formData.dropoff}%0A*Package Type:* ${formData.type}%0A*Est. Weight:* ${formData.weight}kg%0A%0AHello 4Brothers, I would like to get a quote for this package.`;
     
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };

@@ -2,46 +2,74 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react"; // Added Phone icon
 import Link from "next/link";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-return (
+  const phoneNumber = "+2348146007875"; // Using your number from the WhatsApp link
+  const whatsappUrl = `https://wa.me/2348146007875?text=${encodeURIComponent("Hello 4Brothers, I'm interested in your logistics services.")}`;
+
+  return (
     <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/50">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        
         {/* LOGO */}
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
           <Link href="/">
-            <img src="/logo.png" alt="Logo" className="h-10 md:h-14 w-auto object-contain cursor-pointer" />
+            <img src="/logo.png" alt="4Brothers Logo" className="h-10 md:h-14 w-auto object-contain cursor-pointer" />
           </Link>
         </motion.div>
 
         {/* DESKTOP NAV */}
-        <div className="hidden lg:flex items-center gap-10">
-          {['Home', 'Services', 'About'].map((item) => (
-            <Link
-              key={item}
-              href={item === 'Home' ? '/' : item === 'About' ? '/about' : `/#${item.toLowerCase()}`}
-              className="text-sm font-bold text-blue-800 hover:text-red-800 uppercase tracking-widest transition-colors"
+        <div className="hidden lg:flex items-center gap-8">
+          {['Home', 'Services', 'About', 'FAQs'].map((item) => (
+          <Link
+    key={item}
+    href={
+      item === 'Home' ? '/' : 
+      item === 'About' ? '/about' : 
+      item === 'FAQs' ? '/about#faqs' : // Force it to go to the About page FAQ section
+      `/#${item.toLowerCase()}`
+    }
+    onClick={() => setIsMenuOpen(false)}
+              className="text-[11px] font-black text-blue-900 hover:text-red-600 uppercase tracking-[0.2em] transition-colors"
             >
               {item}
             </Link>
           ))}
-          <button 
-  className="bg-red-600 text-white px-8 py-3 rounded-2xl font-black text-sm shadow-xl shadow-red-200 transition-all hover:scale-105 hover:cursor-pointer">
-  <a href={`https://wa.me/2348146007875?text=${encodeURIComponent("Hello 4Brothers, I'm interested in your logistics services and would like to get a quote.")}`}
-  target="_blank"
->CONTACT US
-</a>
- </button>
+
+          {/* CALL REDIRECT ICON */}
+          <motion.a 
+            href={`tel:${phoneNumber}`}
+            whileHover={{ scale: 1.1 }}
+            className="p-2 text-blue-900 hover:text-red-600 transition-colors"
+            title="Call Support"
+          >
+            <Phone size={20} fill="currentColor" className="opacity-80" />
+          </motion.a>
+
+          {/* WHATSAPP CTA */}
+          <motion.a 
+            href={whatsappUrl}
+            target="_blank"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="bg-red-600 text-white px-8 py-3 rounded-2xl font-black text-xs tracking-widest shadow-xl shadow-red-200 transition-all uppercase"
+          >
+            Contact Us
+          </motion.a>
         </div>
 
         {/* MOBILE HAMBURGER */}
-        <div className="lg:hidden">
-          <button onClick={toggleMenu} className="p-2 text-blue-800 font-bold">
+        <div className="lg:hidden flex items-center gap-4">
+           {/* Direct Call for Mobile (Very important for logistics) */}
+          <a href={`tel:${phoneNumber}`} className="text-red-600 p-2">
+            <Phone size={24} fill="currentColor" />
+          </a>
+          <button onClick={toggleMenu} className="p-2 text-slate-950">
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -53,20 +81,37 @@ return (
         animate={{ height: isMenuOpen ? 'auto' : 0, opacity: isMenuOpen ? 1 : 0 }}
         className="lg:hidden bg-white border-b border-slate-100 overflow-hidden"
       >
-        <div className="flex flex-col p-6 gap-6">
-          {['Home', 'Services', 'About', 'Contact'].map((item) => (
-            <Link
-              key={item}
-              href={item === 'Home' ? '/' : item === 'About' ? '/about' : `/#${item.toLowerCase()}`}
-              onClick={() => setIsMenuOpen(false)}
-              className="text-lg font-bold text-slate-700 hover:text-blue-600 transition-colors"
+        <div className="flex flex-col p-8 gap-6">
+          {['Home', 'Services', 'About', 'FAQs'].map((item) => (
+      <Link
+    key={item}
+    href={
+      item === 'Home' ? '/' : 
+      item === 'About' ? '/about' : 
+      item === 'FAQs' ? '/about#faqs' : // Force it to go to the About page FAQ section
+      `/#${item.toLowerCase()}`
+    }
+    onClick={() => setIsMenuOpen(false)}
+              className="text-xl font-black text-slate-950 uppercase tracking-tighter"
             >
               {item}
             </Link>
           ))}
+          <hr className="border-slate-100" />
+          
+          {/* Mobile Call & WhatsApp Actions */}
+          <div className="grid grid-cols-2 gap-4">
+            <a href={`tel:${phoneNumber}`} className="flex items-center justify-center gap-2 bg-slate-100 p-4 rounded-2xl font-bold text-sm">
+              <Phone size={18} /> Call
+            </a>
+            <a href={whatsappUrl} target="_blank" className="flex items-center justify-center gap-2 bg-red-600 text-white p-4 rounded-2xl font-bold text-sm">
+              WhatsApp
+            </a>
+          </div>
         </div>
       </motion.div>
     </nav>
   );
 };
+
 export default Navbar;

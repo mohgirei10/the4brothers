@@ -26,13 +26,13 @@ const Footer = () => {
       { name: 'About Us', href: '/about' },
       { name: 'Our Fleet', href: '/#fleet' },
       { name: 'Services', href: '/#services' },
-      { name: 'Contact', href: '/contact' },
+      { name: 'Contact', href: '/#contact' },
     ],
     support: [
       { name: 'Tracking', href: '#' },
       { name: 'Terms of Service', href: '#' },
       { name: 'Privacy Policy', href: '#' },
-      { name: 'FAQs', href: '#' },
+      { name: 'FAQs', href: '/#faq' },
     ]
   };
 
@@ -92,19 +92,19 @@ const Footer = () => {
 
           {/* CONTACT INFO */}
           <div className="bg-white/5 p-8 rounded-4xl border border-white/10">
-            <h4 className="text-lg font-bold mb-6">Get In Touch</h4>
+            <h4 className="text-lg font-bold tracking-tighter mb-6">Get In Touch</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-4">
                 <MapPin className="text-red-600 mt-1" size={20} />
-                <span className="text-sm text-blue-100">Abuja, Nigeria.</span>
+                <span className="text-sm text-blue-100 tracking-tighter">Abuja, Nigeria.</span>
               </li>
               <li className="flex items-center gap-4">
                 <Phone className="text-red-600" size={20} />
-                <span className="text-sm text-blue-100">+234 814 600 7875</span>
+                <span className="text-sm text-blue-100 tracking-tighter">+234 814 600 7875</span>
               </li>
               <li className="flex items-center gap-4">
                 <Mail className="text-red-600" size={20} />
-                <span className="text-sm text-blue-100">4brotherstransportand <br /> logistic@gmail.com</span>
+                <span className="text-sm text-blue-100 tracking-tighter">4brotherstransportand <br /> logistic@gmail.com</span>
               </li>
             </ul>
           </div>
