@@ -37,7 +37,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-blue-950 text-white pt-20 pb-64 md:pb-12 pb-[env(safe-area-inset-bottom)">
+    <footer className="bg-slate-950 text-white pt-20 pb-64 md:pb-12 pb-[env(safe-area-inset-bottom)">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           

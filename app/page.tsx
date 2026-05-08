@@ -21,7 +21,8 @@ import {
   Menu,
   X,
   Mail,
-  MessageCircle
+  MessageCircle,
+  ArrowRight
 } from 'lucide-react';
 import React from "react";
 import Link from 'next/link';
@@ -136,8 +137,42 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
           </motion.div>
         </div>
       </section>
-       <ShipmentTracker />
+      
        <BookingForm />
+
+    <section className="max-w-5xl mx-auto px-6 pb-40">
+        <div className="bg-slate-950 rounded-[80px] p-16 md:p-32 text-center relative overflow-hidden border border-white/5 shadow-2xl">
+          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+          
+          <h2 className="text-6xl md:text-8xl font-black text-white mb-12 tracking-tighter leading-[0.85] relative z-10">
+            <span className="text-red-600">Ready</span> to <br /> Scale <span className="text-red-600">Up?</span>
+          </h2>
+            <h4 className="text-3xl text-red-600 font-bold mb-10">Get <span className="text-white">In</span> Touch</h4>
+      {/* 1. SOCIAL ICONS CONTAINER: Centered on top */}
+    <div className="flex justify-center items-center gap-4 mb-10 relative z-10">
+      {[SiFacebook, SiInstagram, SiTiktok, SiWhatsapp].map((Icon, i) => (
+        <motion.a
+          key={i}
+          whileHover={{ y: -5, backgroundColor: '#dc2626' }} // Hover to red-600
+          className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center transition-colors border border-white/10"
+          href="#"
+        >
+          <Icon size={20} className="text-white" />
+        </motion.a>
+      ))}
+    </div>
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="bg-red-600 text-white px-8 py-5 rounded-full font-black text-sm tracking-[0.3em] shadow-[0_20px_50px_rgba(220,38,38,0.3)] flex items-center gap-3 mx-auto uppercase relative z-10 hover:bg-red-700 transition-colors"
+          >
+            <a     href="tel:+2348146007875" >
+              Contact Us
+            </a>
+            <ArrowRight size={20} />
+          </motion.button>
+        </div>
+      </section>
 
       {/* 3. BENTO SERVICES GRID */}
       <section id="services" className="py-32 bg-white">
@@ -150,7 +185,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 >
   <MapPin className="text-red-600 group-hover:scale-110 transition-transform" size={18} />
   <span className="text-sm font-bold uppercase tracking-tight text-slate-600">
-    No 7, 24 Crescent 2nd Avenue, Federal Housing Authority, Guzape.
+    No. 7, 24 Crescent 2nd Avenue, Federal Housing Authority, Guzape,Abuja
   </span>
 </a>
 </div>
@@ -214,10 +249,8 @@ Contact Us  </span>
         
       </section>
 
-       <FleetGallery />
-
       {/* 4. ABOUT SECTION - THE STORY & TRUST */}
-      <section id="about" className="py-32 relative overflow-hidden bg-blue-950">
+      <section id="about" className="py-32 relative overflow-hidden bg-slate-950">
   <div className="max-w-7xl mx-auto px-6">
     <div className="grid lg:grid-cols-2 gap-20 items-center">
       
@@ -348,25 +381,25 @@ Contact Us  </span>
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="bg-blue-950 p-10 lg:p-14 rounded-[48px] shadow-2xl relative overflow-hidden"
+        className="bg-slate-950 p-10 lg:p-14 rounded-[48px] shadow-2xl relative overflow-hidden"
       >
         {/* Background Glow */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full blur-[120px] opacity-20 -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-slate-950 rounded-full  -translate-y-1/2 translate-x-1/2" />
         
         <form className="relative z-10 space-y-6" onSubmit={(e) => e.preventDefault()}>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className="text-xs font-black text-blue-200 uppercase tracking-widest ml-1">Full Name</label>
+              <label className="text-xs font-black text-white uppercase tracking-widest ml-1">Full Name</label>
               <input type="text" placeholder="Enter your full name" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 focus:bg-white/10 transition-all font-medium" />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-black text-blue-200 uppercase tracking-widest ml-1">Phone Number</label>
+              <label className="text-xs font-black text-white uppercase tracking-widest ml-1">Phone Number</label>
               <input type="tel" placeholder="Phone Number" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 focus:bg-white/10 transition-all font-medium" />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-black text-blue-200 uppercase tracking-widest ml-1">Service Required</label>
+            <label className="text-xs font-black text-white uppercase tracking-widest ml-1">Service Required</label>
             <select className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white/50 focus:outline-none focus:border-red-500 focus:bg-white/10 transition-all font-medium appearance-none">
               <option className="bg-blue-950 text-white">Courier Dispatch</option>
               <option className="bg-blue-950 text-white">Interstate Delivery</option>
@@ -376,7 +409,7 @@ Contact Us  </span>
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-black text-blue-200 uppercase tracking-widest ml-1">Your Message</label>
+            <label className="text-xs font-black text-white uppercase tracking-widest ml-1">Your Message</label>
             <textarea rows={4} placeholder="Tell us about your shipment..." className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 focus:bg-white/10 transition-all font-medium resize-none"></textarea>
           </div>
 

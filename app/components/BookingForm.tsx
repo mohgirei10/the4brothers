@@ -21,11 +21,11 @@ const BookingForm = () => {
   };
 
   return (
-    <section id="book" className="py-24 bg-blue-950">
+    <section id="book" className="py-24 bg-slate-350">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Request a Quote</h2>
-          <p className="text-blue-200/70 font-medium">Fast, reliable, and transparent pricing for every load.</p>
+          <h2 className="text-4xl md:text-5xl font-black text-blue-950 mb-4">Request a Quote</h2>
+          <p className="text-red-600 font-medium">Fast, reliable, and transparent pricing for every load.</p>
         </div>
 
         <motion.form 
