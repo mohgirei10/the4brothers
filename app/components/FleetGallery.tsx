@@ -29,12 +29,12 @@ const FleetGallery = () => {
   return (
     <section id="fleet" className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <div className="flex flex-col md:flex-row justify-center items-center mb-16 gap-6">
           <div>
             <span className="text-red-600 font-black text-xs uppercase tracking-[0.4em] mb-4 block">Our Capacity</span>
             <h2 className="text-4xl md:text-5xl font-black text-blue-950">A Fleet Built for<br/>Every Challenge.</h2>
           </div>
-          <p className="max-w-md text-slate-500 font-medium">From nimble city vans to heavy-duty haulers, our vehicles are GPS-tracked and maintained to the highest safety standards.</p>
+          <p className=" text-slate-500 font-medium">From nimble city vans to heavy-duty haulers, our vehicles are GPS-tracked and maintained to the highest safety standards.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">

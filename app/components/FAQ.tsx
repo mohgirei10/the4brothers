@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus, HelpCircle } from 'lucide-react';
+import { Plus, Minus, HelpCircle, MessageCircle } from 'lucide-react';
 
 const faqs = [
   {
@@ -92,8 +92,16 @@ const FAQ = () => {
             <h4 className="text-xl font-bold text-blue-950">Still have questions?</h4>
             <p className="text-slate-500 font-medium">We're here to help you move with peace of mind.</p>
           </div>
-          <button className="bg-blue-950 text-white px-8 py-4 rounded-2xl font-bold hover:bg-red-600 transition-colors whitespace-nowrap">
-            Contact Support
+          <button>
+            <a 
+  href={`https://wa.me/2348146007875?text=${encodeURIComponent("I need assistance.")}`}
+  target="_blank"
+  className="mx-auto flex w-fit items-center gap-3 rounded-full border border-slate-200 px-6 py-3 mb-8 shadow-sm hover:border-green-400 transition-colors group"
+>
+  <MessageCircle className="text-blue-600 group-hover:scale-110 transition-transform" size={18} />
+  <span className="text-sm font-bold uppercase tracking-tight text-slate-600">
+Contact Support  </span>
+</a>
           </button>
         </div>
       </div>

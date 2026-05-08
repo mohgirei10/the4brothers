@@ -1,18 +1,31 @@
 import { NextResponse } from 'next/server';
-import connectToDatabase from '@/lib/mongodb';
-import Shipment from '@/models/Shipment';
+import clientPromise from '@/lib/mongodb';
 
 export async function POST(request: Request) {
   try {
-    await connectToDatabase();
+    // 1. Check if the environment variable exists inside the handler
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json(
+        { error: "Database configuration missing on server." },
+        { status: 500 }
+      );
+    }
+
+    const client = await clientPromise;
+    const db = client.db("4Brothers"); // Use your DB name
+    
     const body = await request.json();
+    
+    // Your logic to create a shipment...
+    const result = await db.collection("shipments").insertOne(body);
 
-    // Create the new shipment in Atlas
-    const newShipment = await Shipment.create(body);
+    return NextResponse.json({ success: true, id: result.insertedId });
 
-    return NextResponse.json(newShipment, { status: 201 });
-  } catch (error: any) {
-    console.error(error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error) {
+    console.error("Build-time/Runtime error:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }

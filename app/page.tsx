@@ -2,7 +2,6 @@
 
 import { 
   SiInstagram, 
-  SiX, 
   SiFacebook ,
   SiWhatsapp, 
   SiTiktok
@@ -20,7 +19,9 @@ import {
   Truck, Package, MapPin, Clock, ShieldCheck, 
   Phone, ChevronRight, Globe, Warehouse, Zap, Users,
   Menu,
-  X
+  X,
+  Mail,
+  MessageCircle
 } from 'lucide-react';
 import React from "react";
 import Link from 'next/link';
@@ -94,13 +95,13 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
             
             {/* Professional Tracking UI */}
             <motion.div variants={itemVariants} className="relative group">
-
+   
              
                  <motion.button 
               onClick={() => {
               const phoneNumber = "2348146007875"; // International format without the '+'
               const message = encodeURIComponent("Hello 4Brothers! I'd like to inquire about a shipment.");
-              window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+              window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent("Hello 4Brothers, I'm interested in your logistics services and would like to get a quote.")}`, '_blank');
   }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -136,11 +137,23 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
         </div>
       </section>
        <ShipmentTracker />
-       <FleetGallery />
        <BookingForm />
 
       {/* 3. BENTO SERVICES GRID */}
       <section id="services" className="py-32 bg-white">
+ <div className="mx-auto mt-2 flex w-fit items-center gap-3  px-6 py-3 mb-8">
+<a 
+  href="https://www.google.com/maps/search/?api=1&query=No+7+24+Crescent+2nd+Avenue+Guzape+Abuja"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mx-auto flex w-fit items-center gap-3 rounded-full border border-slate-200 px-6 py-3 mb-8 shadow-sm hover:border-red-400 hover:bg-red-50/30 transition-all group"
+>
+  <MapPin className="text-red-600 group-hover:scale-110 transition-transform" size={18} />
+  <span className="text-sm font-bold uppercase tracking-tight text-slate-600">
+    No 7, 24 Crescent 2nd Avenue, Federal Housing Authority, Guzape.
+  </span>
+</a>
+</div>
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
             <motion.h2 
@@ -183,16 +196,25 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
                     {s.desc}
                   </p>
                   <div className="mt-8 flex items-center gap-2 text-blue-600 font-black text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all -translate-x-4 group-hover:translate-x-0">
-                    Learn More <ChevronRight size={14} />
+                  <a 
+  href={`https://wa.me/2348146007875?text=${encodeURIComponent("I'm at the Guzape branch and need assistance.")}`}
+  target="_blank"
+  className="mx-auto flex w-fit items-center gap-3 rounded-full border border-slate-200 px-6 py-3 mb-8 shadow-sm hover:border-green-400 transition-colors group"
+>
+  <MessageCircle className="text-green-500 group-hover:scale-110 transition-transform" size={18} />
+  <span className="text-sm font-bold uppercase tracking-tight text-slate-600">
+Contact Us  </span>
+</a>
                   </div>
                 </motion.div>
               );
             })}
           </motion.div>
         </div>
+        
       </section>
 
-      
+       <FleetGallery />
 
       {/* 4. ABOUT SECTION - THE STORY & TRUST */}
       <section id="about" className="py-32 relative overflow-hidden bg-blue-950">
@@ -297,10 +319,10 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
         </motion.p>
 
         {/* Contact Cards */}
-        <div className="space-y-6">
+        <div className="space-y-6 uppercase">
           {[
-            { icon: Phone, title: "Call Us Directly", detail: "08146007875", color: "text-blue-600", bg: "bg-blue-50" },
-            { icon: MapPin, title: "Head Office", detail: "Abuja, Nigeria", color: "text-red-600", bg: "bg-red-50" },
+            { icon: Phone, title: "Call Us Now", detail: "08146007875", color: "text-blue-600", bg: "bg-blue-50" },
+            { icon: MapPin, title: "Head Office", detail: "No. 7, 24 Crescent 2nd Avenue, Federal Housing Authority Guzape, Abuja, Nigeria.", color: "text-red-600", bg: "bg-red-50" },
             { icon: Clock, title: "Working Hours", detail: "24/7 Operations", color: "text-slate-900", bg: "bg-slate-100" }
           ].map((item, i) => (
             <motion.div 
@@ -339,7 +361,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
             </div>
             <div className="space-y-2">
               <label className="text-xs font-black text-blue-200 uppercase tracking-widest ml-1">Phone Number</label>
-              <input type="tel" placeholder="0812..." className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 focus:bg-white/10 transition-all font-medium" />
+              <input type="tel" placeholder="Phone Number" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 focus:bg-white/10 transition-all font-medium" />
             </div>
           </div>
 
@@ -349,7 +371,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
               <option className="bg-blue-950 text-white">Courier Dispatch</option>
               <option className="bg-blue-950 text-white">Interstate Delivery</option>
               <option className="bg-blue-950 text-white">Express Delivery</option>
-              <option className="bg-blue-950 text-white">Office Relocation</option>
+              <option className="bg-blue-950 text-white">Relocation</option>
             </select>
           </div>
 
@@ -358,13 +380,15 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
             <textarea rows={4} placeholder="Tell us about your shipment..." className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 focus:bg-white/10 transition-all font-medium resize-none"></textarea>
           </div>
 
-          <motion.button 
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-5 rounded-2xl hover:cursor-pointer shadow-xl shadow-red-900/40 transition-all flex items-center justify-center gap-3 uppercase tracking-widest text-sm"
-          >
-            Send Inquiry <ChevronRight size={18} />
-          </motion.button>
+     <a 
+  href="mailto:info@4brotherslogistics.com?subject=Inquiry"
+  className="mx-auto flex w-fit items-center gap-5 rounded-xl bg-red-600 px-8 py-4 mb-8 shadow-sm  transition-colors group"
+>
+  <Mail className="text-slate-100 group-hover:scale-110 transition-transform" size={18} />
+  <span className="text-sm font-bold uppercase tracking-tight text-slate-100">
+    Send Inquiry 
+  </span>
+</a>
         </form>
       </motion.div>
 

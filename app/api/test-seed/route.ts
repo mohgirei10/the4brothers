@@ -1,10 +1,9 @@
 import { NextResponse } from 'next/server';
-import connectToDatabase from '@/lib/mongodb';
 import Shipment from "@/models/Shipment";
+import clientPromise from '@/lib/mongodb';
 export async function GET() {
   try {
-    await connectToDatabase();
-
+const client = await clientPromise;
     const testShipment = await Shipment.create({
       trackingId: "4B-777",
       senderName: "Test Client",

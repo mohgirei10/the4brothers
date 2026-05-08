@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { 
   SiInstagram, 
-  SiX, 
   SiFacebook ,
   SiWhatsapp, 
   SiTiktok
@@ -38,7 +37,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-blue-950 text-white pt-20 pb-10 overflow-hidden">
+    <footer className="bg-blue-950 text-white pt-20 pb-64 md:pb-12 pb-[env(safe-area-inset-bottom)">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
@@ -97,7 +96,7 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-4">
                 <MapPin className="text-red-600 mt-1" size={20} />
-                <span className="text-sm text-blue-100">Bwari, Abuja, Nigeria</span>
+                <span className="text-sm text-blue-100">Abuja, Nigeria.</span>
               </li>
               <li className="flex items-center gap-4">
                 <Phone className="text-red-600" size={20} />
@@ -105,15 +104,16 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-4">
                 <Mail className="text-red-600" size={20} />
-                <span className="text-sm text-blue-100">info@the4brothers.ng</span>
+                <span className="text-sm text-blue-100">4brotherstransportand <br /> logistic@gmail.com</span>
               </li>
             </ul>
           </div>
+          
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-blue-200/40 text-xs font-medium uppercase tracking-widest">
+        <div className="p-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-blue-200/40 text-xs uppercase tracking-tighter">
             © {currentYear} 4BROTHERS TRANSPORT. ALL RIGHTS RESERVED.
           </p>
           <div className="flex gap-8">

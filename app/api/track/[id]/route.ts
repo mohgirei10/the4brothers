@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/mongodb';
 import Shipment from '@/models/Shipment';
+import clientPromise from '@/lib/mongodb';
 
 // Notice the 'await params' below
 export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    await connectToDatabase();
-    
+const client = await clientPromise;    
     const { id } = await params; 
     const trackingId = id;
 

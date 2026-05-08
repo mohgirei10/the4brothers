@@ -1,42 +1,32 @@
-import mongoose from 'mongoose';
+import { MongoClient } from 'mongodb';
 
-// 1. Tell TypeScript this IS a string
-const MONGODB_URI = process.env.MONGODB_URI as string;
+const uri = process.env.MONGODB_URI;
+const options = {};
 
-if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+let client: MongoClient;
+let clientPromise: Promise<MongoClient>;
+
+if (!process.env.MONGODB_URI) {
+  // We don't throw an error here anymore. 
+  // We wait until the function is actually called.
 }
 
-let cached = (global as any).mongoose;
+if (process.env.NODE_ENV === 'development') {
+  // In development mode, use a global variable so the value
+  // is preserved across module reloads caused by HMR (Hot Module Replacement).
+  let globalWithMongo = global as typeof globalThis & {
+    _mongoClientPromise?: Promise<MongoClient>;
+  };
 
-if (!cached) {
-  cached = (global as any).mongoose = { conn: null, promise: null };
+  if (!globalWithMongo._mongoClientPromise) {
+    client = new MongoClient(uri!, options);
+    globalWithMongo._mongoClientPromise = client.connect();
+  }
+  clientPromise = globalWithMongo._mongoClientPromise;
+} else {
+  // In production mode, it's best to not use a global variable.
+  client = new MongoClient(uri!, options);
+  clientPromise = client.connect();
 }
 
-async function connectToDatabase() {
-  if (cached.conn) {
-    return cached.conn;
-  }
-
-  if (!cached.promise) {
-    const opts = {
-      bufferCommands: false,
-    };
-
-    // TypeScript is now happy because MONGODB_URI is strictly a string
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      return mongoose;
-    });
-  }
-
-  try {
-    cached.conn = await cached.promise;
-  } catch (e) {
-    cached.promise = null;
-    throw e;
-  }
-
-  return cached.conn;
-}
-
-export default connectToDatabase;
+export default clientPromise;

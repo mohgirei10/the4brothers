@@ -30,9 +30,13 @@ return (
               {item}
             </Link>
           ))}
-          <button className="bg-red-600 text-white px-8 py-3 rounded-full font-black text-sm shadow-xl shadow-red-200 transition-all hover:scale-105 hover:cursor-pointer">
-            BOOK NOW
-          </button>
+          <button 
+  className="bg-red-600 text-white px-8 py-3 rounded-2xl font-black text-sm shadow-xl shadow-red-200 transition-all hover:scale-105 hover:cursor-pointer">
+  <a href={`https://wa.me/2348146007875?text=${encodeURIComponent("Hello 4Brothers, I'm interested in your logistics services and would like to get a quote.")}`}
+  target="_blank"
+>CONTACT US
+</a>
+ </button>
         </div>
 
         {/* MOBILE HAMBURGER */}
@@ -50,7 +54,7 @@ return (
         className="lg:hidden bg-white border-b border-slate-100 overflow-hidden"
       >
         <div className="flex flex-col p-6 gap-6">
-          {['Home', 'Services', 'About'].map((item) => (
+          {['Home', 'Services', 'About', 'Contact'].map((item) => (
             <Link
               key={item}
               href={item === 'Home' ? '/' : item === 'About' ? '/about' : `/#${item.toLowerCase()}`}
