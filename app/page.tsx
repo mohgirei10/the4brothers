@@ -28,7 +28,6 @@ import React from "react";
 import Link from 'next/link';
 import BookingForm from "./components/BookingForm";
 import FleetGallery from "./components/FleetGallery";
-import ShipmentTracker from "./components/ShipmentTracker";
 
 const PremiumLogisticsUI = () => {
   // Animation Variants
@@ -71,76 +70,102 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   <div className="min-h-screen bg-[#FAFBFF] font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-700 overflow-x-hidden">
       
       {/* 2. HERO SECTION WITH PATTERNED BACKGROUND */}
-      <section id="home" className="relative pt-32 pb-24 overflow-hidden">
-        {/* Background Decorative Elements */}
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[40px_40px] opacity-25" />
-        <div className="absolute top-0 right-0 -z-10 w-15050 bg-blue-100/40 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
+   <section id="home" className="relative pt-32 pb-24 overflow-hidden min-h-[90vh] flex items-center ">
+      
+      {/* --- PREMIUM DYNAMIC BACKGROUND --- */}
+      <div className="absolute inset-0 -z-20">
         
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
-          <motion.div initial="hidden" animate="visible" variants={containerVariants}>
-            <motion.span variants={itemVariants} className="inline-block px-4 py-1.5 rounded-lg bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.3em] mb-8 shadow-lg shadow-blue-200">
-              Nationwide Logistics Partner
-            </motion.span>
-            
+        {/* The 'Premium Fade' Overlay */}
+        {/* Goes from Solid White (left) to transparent (right), ensuring text readability */}
+        <div className="absolute inset-0 bg-linear-to-r from-white via-white/80 to-transparent" />
+        
+        {/* Vignette bottom shadow to blend with the next section */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-white to-transparent" />
+      </div>
+
+      {/* Legacy Decorative Grid (reduced opacity) */}
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[40px_40px] opacity-10" />
+
+      {/* --- CONTENT --- */}
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center relative z-10">
+        
+        {/* LEFT COLUMN: Text & CTA */}
+        <motion.div initial="hidden" animate="visible" variants={containerVariants}>
+          <motion.span variants={itemVariants} className="inline-block px-5 py-2 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.3em] mb-8 shadow-lg shadow-blue-200 border border-blue-500">
+            Nationwide Logistics Partner
+          </motion.span>
+          
           <motion.h1 
-  variants={itemVariants} 
-  className="text-6xl lg:text-[90px] font-black text-blue-950 leading-[0.85] mb-8 tracking-tighter"
->
-  Fast. Reliable. <br/>
-  <span className="text-red-600">On Time.</span>
-</motion.h1>
-            
-            <motion.p variants={itemVariants} className="text-lg text-slate-500 max-w-lg leading-relaxed mb-12 font-medium">
-              We provide smart logistics solutions that remove the stress from your supply chain. Moving across Abuja or any state in Nigeria? We’ve got you covered.
-            </motion.p>
-            
-            {/* Professional Tracking UI */}
-            <motion.div variants={itemVariants} className="relative group">
-   
-             
-                 <motion.button 
-              onClick={() => {
-              const phoneNumber = "2348146007875"; // International format without the '+'
-              const message = encodeURIComponent("Hello 4Brothers! I'd like to inquire about a delivery.");
-              window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent("Hello 4Brothers, I'm interested in your logistics services and would like to get a quote.")}`, '_blank');
-  }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full bg-red-600 hover:bg-blue-600 text-white font-black px-3 hover:cursor-pointer py-5 rounded-full transition-all transform hover:scale-105 active:scale-95 shadow-xl shadow-red-200 flex items-center justify-center gap-1 uppercase tracking-widest text-lg"
+            variants={itemVariants} 
+            className="text-6xl md:text-7xl lg:text-[90px] font-black text-blue-950 leading-[0.85] mb-8 tracking-tighter"
           >
-            Book Now <ChevronRight size={18} />
-          </motion.button>
-
-            </motion.div>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative"
-          >
-            <div className="rounded-[60px] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border-12 border-red-600 relative z-10">
-                  <ImageCarousel />
-            </div>
-            
-            {/* Floating Trust Badge */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }} 
-              transition={{ repeat: Infinity, duration: 4 }}
-              className="absolute -top-6 -right-6 bg-red-600 p-6 rounded-3xl shadow-2xl shadow-red-200 z-20 text-white text-center hidden md:block"
+            Fast. Reliable. <br/>
+            <span className="relative inline-block text-red-600">
+              On Time.
+              {/* Subtle accent underline for "On Time" */}
+              <svg className="absolute -bottom-2 left-0 w-full h-2 text-red-600" viewBox="0 0 100 10" preserveAspectRatio="none">
+                <path d="M0 5 Q 50 0 100 5" stroke="currentColor" strokeWidth="4" fill="none"/>
+              </svg>
+            </span>
+          </motion.h1>
+          
+          <motion.p variants={itemVariants} className="text-lg text-slate-600 max-w-lg leading-relaxed mb-12 font-medium">
+            We provide smart logistics solutions that remove the stress from your supply chain. Moving across Abuja or any state in Nigeria? We’ve got you covered.
+          </motion.p>
+          
+          {/* WA.ME CTA */}
+          <motion.div variants={itemVariants}>
+             <motion.a 
+              href={`https://wa.me/2348146007875?text=${encodeURIComponent("Hello 4Brothers, I'm interested in your logistics services and would like to get a quote.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.03, backgroundColor: '#1d4ed8' }} // Hover to blue-700
+              whileTap={{ scale: 0.98 }}
+              className="w-full bg-red-600 text-white font-black px-10 py-5 rounded-full transition-all shadow-2xl shadow-red-200 flex items-center justify-center gap-2 uppercase tracking-[0.2em] text-lg group"
             >
-              <ShieldCheck size={32} className="mx-auto mb-2" />
-              <p className="text-xs font-black uppercase tracking-widest">Secure</p>
-              <p className="text-[10px] font-bold opacity-80 uppercase tracking-widest">Delivery</p>
-            </motion.div>
+              Book Now <ChevronRight size={22} className="group-hover:translate-x-1 transition-transform" />
+            </motion.a>
           </motion.div>
-        </div>
-      </section>
+        </motion.div>
+
+        {/* RIGHT COLUMN: Image Carousel & Badge */}
+        <motion.div 
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="relative"
+        >
+          {/* Main Carousel Container */}
+          <div className="rounded-[60px] overflow-hidden shadow-[0_60px_120px_-20px_rgba(30,58,138,0.2)] border-16 border-red-600 relative z-10 bg-white">
+              {/* Assuming <ImageCarousel /> is defined elsewhere */}
+              <div className="w-full aspect-4/3 bg-slate-100 flex items-center justify-center text-slate-400">
+                                     <ImageCarousel />
+</div>
+          </div>
+          
+          {/* --- REFINED FLOATING TRUST BADGE --- */}
+          {/* Moved down slightly and integrated better with the main border */}
+          <motion.div 
+            animate={{ y: [0, -12, 0] }} 
+            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+            className="absolute bottom-10 -right-8 bg-white p-6 rounded-3xl shadow-[0_32px_64px_-10px_rgba(0,0,0,0.1)] z-20 hidden md:flex items-center gap-4 border border-slate-100"
+          >
+            <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-red-100">
+              <ShieldCheck size={36} strokeWidth={2.5} />
+            </div>
+            <div>
+              <p className="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 mb-1">Secure</p>
+              <p className="text-xl font-extrabold text-blue-950 tracking-tight leading-none">Delivery</p>
+            </div>
+          </motion.div>
+        </motion.div>
+
+      </div>
+    </section>
       
        <BookingForm />
 
-    <section className="max-w-5xl mx-auto px-6 pb-40">
+    <section className="max-w-5xl mx-auto px-6 pb-24">
         <div className="bg-slate-950 rounded-[80px] p-16 md:p-32 text-center relative overflow-hidden border border-white/5 shadow-2xl">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
           
@@ -176,7 +201,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
       {/* 3. BENTO SERVICES GRID */}
       <section id="services" className="py-32 bg-white">
- <div className="mx-auto mt-2 flex w-fit items-center gap-3  px-6 py-3 mb-8">
+ <div className="mx-auto flex w-fit items-center gap-3  px-6 py-3 mb-8">
 <a 
   href="https://www.google.com/maps/search/?api=1&query=No+7+24+Crescent+2nd+Avenue+Guzape+Abuja"
   target="_blank"

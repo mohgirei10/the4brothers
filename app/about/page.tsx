@@ -210,7 +210,7 @@ const AboutPage = () => {
             Moving <span className="text-red-600">Nigeria</span> <br /> 
             With <span className="relative inline-block">
               Purpose
-              <svg className="absolute -bottom-4 left-0 w-full h-4 text-red-600/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+              <svg className="absolute -bottom-4 left-0 w-full h-4 text-red-600" viewBox="0 0 100 10" preserveAspectRatio="none">
                 <path d="M0 5 Q 50 0 100 5" stroke="currentColor" strokeWidth="6" fill="none"/>
               </svg>
             </span>
