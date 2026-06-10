@@ -350,28 +350,56 @@ Contact Us  </span>
         </motion.p>
 
         {/* Contact Cards */}
-        <div className="space-y-6 uppercase">
-          {[
-            { icon: Phone, title: "Call Us Now", detail: "08146007875", color: "text-blue-600", bg: "bg-blue-50" },
-            { icon: MapPin, title: "Head Office", detail: "No. 7, 24 Crescent 2nd Avenue, Federal Housing Authority Guzape, Abuja, Nigeria.", color: "text-red-600", bg: "bg-red-50" },
-            { icon: Clock, title: "Working Hours", detail: "24/7 Operations", color: "text-slate-900", bg: "bg-slate-100" }
-          ].map((item, i) => (
-            <motion.div 
-              key={i}
-              variants={itemVariants}
-              whileHover={{ x: 10 }}
-              className="flex items-center gap-6 p-6 rounded-3xl border border-slate-100 hover:border-blue-100 hover:shadow-lg transition-all cursor-pointer group"
-            >
-              <div className={`w-14 h-14 rounded-2xl ${item.bg} ${item.color} flex items-center justify-center transition-transform group-hover:scale-110`}>
-                <item.icon size={24} />
-              </div>
-              <div>
-                <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">{item.title}</p>
-                <p className="text-xl font-bold text-blue-950">{item.detail}</p>
-              </div>
-            </motion.div>
-          ))}
+   <div className="space-y-6 uppercase">
+  {[
+    { 
+      icon: Phone, 
+      title: "Call Us Now", 
+      // ✅ Changed from a string to JSX so we can stack numbers cleanly
+      detail: (
+        <div className="flex flex-col space-y-1">
+          <span>0814 600 7875</span>
+          <span>0905 500 6699</span>
+          <span>0916 505 9691</span>
+          {/* 👇 JUST ADD NEW NUMBERS HERE LIKE THIS 👇 */}
+          <span>0800 123 4567</span> 
         </div>
+      ), 
+      color: "text-blue-600", 
+      bg: "bg-blue-50" 
+    },
+    { 
+      icon: MapPin, 
+      title: "Head Office", 
+      detail: "No. 7, 24 Crescent 2nd Avenue, Federal Housing Authority Guzape, Abuja, Nigeria.", 
+      color: "text-red-600", 
+      bg: "bg-red-50" 
+    },
+    { 
+      icon: Clock, 
+      title: "Working Hours", 
+      detail: "24/7 Operations", 
+      color: "text-slate-900", 
+      bg: "bg-slate-100" 
+    }
+  ].map((item, i) => (
+    <motion.div 
+      key={i}
+      variants={itemVariants}
+      whileHover={{ x: 10 }}
+      className="flex items-center gap-6 p-6 rounded-3xl border border-slate-100 hover:border-blue-100 hover:shadow-lg transition-all cursor-pointer group"
+    >
+      <div className={`w-14 h-14 rounded-2xl ${item.bg} ${item.color} flex items-center justify-center transition-transform group-hover:scale-110 shrink-0`}>
+        <item.icon size={24} />
+      </div>
+      <div>
+        <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">{item.title}</p>
+        {/* ✅ Because `detail` is now JSX, React will render the stacked numbers perfectly */}
+        <div className="text-xl font-bold text-blue-950">{item.detail}</div>
+      </div>
+    </motion.div>
+  ))}
+</div>
       </motion.div>
 
       {/* Right Side: Inquiry Form */}
