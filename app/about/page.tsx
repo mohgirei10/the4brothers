@@ -63,7 +63,7 @@ const CeoHero = () => {
 
           <header className="relative z-10 mb-8">
             <span className="text-red-500 font-black text-xs uppercase tracking-[0.4em] mb-6 block">Managing Director</span>
-            <h2 className="text-5xl lg:text-7xl font-black uppercase text-white leading-[0.9] tracking-tighter mb-4">
+            <h2 className="text-4xl lg:text-7xl font-black uppercase text-white leading-[0.9] tracking-tighter mb-4">
 Muhammad<br /> 
               <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-slate-500">
                 Inuwa Bassi

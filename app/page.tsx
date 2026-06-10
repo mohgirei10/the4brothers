@@ -355,7 +355,6 @@ Contact Us  </span>
     { 
       icon: Phone, 
       title: "Call Us Now", 
-      // ✅ Changed from a string to JSX so we can stack numbers cleanly
       detail: (
         <div className="flex flex-col space-y-1">
           <span>0814 600 7875</span>
@@ -392,7 +391,6 @@ Contact Us  </span>
       </div>
       <div>
         <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">{item.title}</p>
-        {/* ✅ Because `detail` is now JSX, React will render the stacked numbers perfectly */}
         <div className="text-xl font-bold text-blue-950">{item.detail}</div>
       </div>
     </motion.div>
