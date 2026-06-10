@@ -361,8 +361,6 @@ Contact Us  </span>
           <span>0814 600 7875</span>
           <span>0905 500 6699</span>
           <span>0916 505 9691</span>
-          {/* 👇 JUST ADD NEW NUMBERS HERE LIKE THIS 👇 */}
-          <span>0800 123 4567</span> 
         </div>
       ), 
       color: "text-blue-600", 
