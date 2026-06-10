@@ -151,7 +151,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
        <BookingForm />
 
       {/* 3. SOCIAL*/}
-    <section className="max-w-5xl mx-auto px-6 pb-24">
+    <section className="max-w-5xl mx-auto px-6 pb-24 mt-12">
         <div className="bg-slate-900 rounded-[80px] p-16 md:p-32 text-center relative overflow-hidden border border-white/5 shadow-2xl">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
           
