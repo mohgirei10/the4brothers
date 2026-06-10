@@ -21,10 +21,13 @@ const BookingForm = () => {
   };
 
   return (
-    <section id="book" className="py-24 bg-slate-350">
+    <section id="book" className="py-24 bg-slate-900 ">
+
       <div className="max-w-4xl mx-auto px-6">
+       <div className="absolute top-20 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-black text-blue-950 mb-4">Request a Quote</h2>
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Request a Quote</h2>
           <p className="text-red-600 font-medium">Fast, reliable, and transparent pricing for every load.</p>
         </div>
 
@@ -99,7 +102,7 @@ const BookingForm = () => {
 
           <button 
             type="submit"
-               className="mx-auto flex w-fit items-center gap-5 rounded-xl font-[12px] uppercase text-white bg-red-600 px-8 py-4 mb-8 shadow-sm  transition-colors group"
+               className="mx-auto flex w-fit items-center gap-5 rounded-xl font-bold text-white uppercase bg-red-600 px-8 py-4 mb-8 shadow-sm  transition-colors group"
           >
           Instant Quote<Send size={20} />
           </button>

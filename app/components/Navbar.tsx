@@ -36,7 +36,7 @@ const Navbar = () => {
       `/#${item.toLowerCase()}`
     }
     onClick={() => setIsMenuOpen(false)}
-              className="text-[12px] font-black text-white hover:text-red-600 uppercase tracking-[0.2em] transition-colors"
+              className="text-[15px] h-4 font-black text-white hover:text-red-600  tracking-tight transition-colors"
             >
               {item}
             </Link>
@@ -58,7 +58,7 @@ const Navbar = () => {
             target="_blank"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-red-600 text-white px-8 py-3 rounded-2xl font-black text-xs tracking-widest shadow-l shadow-red-200 transition-all uppercase"
+            className="bg-red-600 text-white px-8 py-3 rounded-2xl font-black text-xs tracking-widest shadow-l shadow-red-200 transition-all "
           >
             Contact Us
           </motion.a>
@@ -93,7 +93,7 @@ const Navbar = () => {
       `/#${item.toLowerCase()}`
     }
     onClick={() => setIsMenuOpen(false)}
-              className="text-xl text-white font-bold uppercase tracking-tighter"
+              className="text-xl text-white font-bold  tracking-tighter"
             >
               {item}
             </Link>

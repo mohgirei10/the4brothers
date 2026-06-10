@@ -222,7 +222,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
                   key={idx}
                   variants={itemVariants}
                   whileHover={{ y: -12 }}
-                  className="group p-12 bg-slate-50 hover:bg-white border border-transparent hover:border-slate-100 rounded-[40px] transition-all duration-500 cursor-pointer hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)]"
+                  className="group p-12 bg-red-400 hover:bg-white border border-transparent hover:border-slate-100 rounded-[40px] transition-all duration-500 cursor-pointer hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)]"
                 >
                   <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-10 shadow-lg group-hover:scale-110 transition-transform duration-500 ${s.c}`}>
                     <IconComp size={30} strokeWidth={2.5} />
