@@ -13,10 +13,10 @@ import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
 
 // ✅ Fixed spelling ("TikTok") and ensured data is ready for the map function
 const socialLinks = [
-  { id: 1, name: "Instagram", icon: <SiInstagram size={18} />, link: "https://instagram.com/the4brotherstransport", hoverColor: "hover:bg-pink-500" },
-  { id: 2, name: "Facebook", icon: <SiFacebook size={18} />, link: "https://facebook.com/the4brotherstransport", hoverColor: "hover:bg-blue-600" },
+  { id: 1, name: "Instagram", icon: <SiInstagram size={18} />, link: "https://instagram.com/the4brotherstransporttext=Hello%204Brothers", hoverColor: "hover:bg-pink-500" },
+  { id: 2, name: "Facebook", icon: <SiFacebook size={18} />, link: "https://facebook.com/profile.php?id=61565267652819text=Hello%204Brothers", hoverColor: "hover:bg-blue-600" },
   { id: 3, name: "WhatsApp", icon: <SiWhatsapp size={18} />, link: "https://wa.me/2348146007875?text=Hello%204Brothers", hoverColor: "hover:bg-green-500" },
-  { id: 4, name: "TikTok", icon: <SiTiktok size={18} />, link: "https://tiktok.com/@the4brotherstransport", hoverColor: "hover:bg-zinc-900" },
+  { id: 4, name: "TikTok", icon: <SiTiktok size={18} />, link: "https://tiktok.com/@sb.faruqtext=Hello%204Brothers", hoverColor: "hover:bg-zinc-900" },
 ];
 
 const Footer = () => {
@@ -139,9 +139,23 @@ const Footer = () => {
           <p className="text-blue-200/40 text-xs uppercase tracking-wider">
             © {currentYear} 4BROTHERS TRANSPORT. ALL RIGHTS RESERVED.
           </p>
-          <button 
+     {/* ✅ YOUR DEVELOPER CREDIT */}
+  <p 
+    className='text-blue-200/40 text-xs uppercase tracking-wider'>
+    Designed & Developed by{" "}
+    <a 
+      href='https://mohgirei10.github.io/'
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="text-red-500 hover:blue-200/60 uppercase font-medium transition-colors duration-200 underline underline-offset-4"
+    >
+      Adamu Muhammed Girei
+    </a>
+  </p>
+   </div>
+   <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-xs font-bold text-red-500 hover:text-red-400 uppercase tracking-widest transition-colors flex items-center gap-2 group"
+            className="text-xs font-bold text-red-500 hover:text-red-400 uppercase tracking-widest transition-colors justify-center flex items-center gap-2 group"
           >
             Back to top
             <motion.div
@@ -151,8 +165,8 @@ const Footer = () => {
               <ArrowRight size={14} className="-rotate-90" />
             </motion.div>
           </button>
-        </div>
       </div>
+      
     </footer>
   );
 };
