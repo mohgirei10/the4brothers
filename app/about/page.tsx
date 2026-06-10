@@ -245,7 +245,7 @@ const AboutPage = () => {
         >
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] group-hover:bg-blue-600/20 transition-colors"></div>
           <Users className="text-red-600 mb-10" size={48} />
-          <h3 className="text-5xl font-black mb-8 tracking-tighter italic">The 4Brothers Bond</h3>
+          <h3 className="text-5xl font-black mb-8 tracking-tighter italic uppercase">The 4Brothers Bond</h3>
           <p className="text-slate-400 leading-relaxed text-xl max-w-xl font-medium">
             Founded in Abuja, we operate on deep-rooted family values. Every delivery is handled with the personal care of a brother, ensuring your cargo is never just a tracking number.
           </p>

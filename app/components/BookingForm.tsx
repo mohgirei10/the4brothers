@@ -99,7 +99,7 @@ const BookingForm = () => {
 
           <button 
             type="submit"
-            className="w-full bg-red-600 hover:bg-red-700 text-white hover:cursor-pointer p-5 rounded-2xl font-black text-lg shadow-xl shadow-red-200/50 transition-all transform hover:scale-[1.02] flex justify-center items-center gap-3 mt-4"
+               className="mx-auto flex w-fit items-center gap-5 rounded-xl font-[12px] uppercase text-white bg-red-600 px-8 py-4 mb-8 shadow-sm  transition-colors group"
           >
           Instant Quote<Send size={20} />
           </button>

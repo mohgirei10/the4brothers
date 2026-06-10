@@ -107,7 +107,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
               rel="noopener noreferrer"
               whileHover={{ scale: 1.03, backgroundColor: '#1d4ed8' }} 
               whileTap={{ scale: 0.98 }}
-              className="w-full bg-red-600 text-white font-black px-10 py-5 rounded-full transition-all shadow-2xl shadow-red-200 flex items-center justify-center gap-2 uppercase tracking-[0.2em] text-lg group"
+              className="w-[70%] bg-red-600 text-white font-black px-10 py-5 rounded-full transition-all shadow-2xl shadow-red-200 flex items-center justify-center gap-2 uppercase tracking-[0.2em] text-lg group"
             >
               Book Now <ChevronRight size={22} className="group-hover:translate-x-1 transition-transform" />
             </motion.a>

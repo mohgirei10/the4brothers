@@ -70,7 +70,7 @@ const Navbar = () => {
           <a href={`tel:${phoneNumber}`} className="text-red-600 p-2">
             <Phone size={24} fill="currentColor" />
           </a>
-          <button onClick={toggleMenu} className="p-2 text-white">
+          <button onClick={toggleMenu} className=" text-white">
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>

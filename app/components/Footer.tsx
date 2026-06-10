@@ -44,8 +44,9 @@ const Footer = () => {
           {/* BRAND & SOCIALS SECTION */}
           <div className="md:col-span-2 lg:col-span-4 space-y-6 text-left">
             <img src="/logo.png" alt="4Brothers Logistics" className="h-9 w-auto object-contain" />
-            <p className="text-slate-400 leading-relaxed text-sm max-w-sm">
-              Premium logistics and transport solutions based in Abuja. We move your business forward with speed, safety, and integrity.
+            <p className="text-zinc-300 leading-relaxed text-sm max-w-sm">
+              Premium logistics and transport solutions based<br /> in Abuja. 
+              We move your business forward with <br /> speed, safety, and integrity.
             </p>
             {/* Expanded social links container for easier tapping on mobile */}
             <div className="flex flex-wrap gap-4 pt-2">
@@ -69,11 +70,11 @@ const Footer = () => {
           {/* LINKS SECTION (Two structural columns on mobile, clean columns on desktop) */}
           <div className="lg:col-span-4 grid grid-cols-2 gap-8 sm:gap-6">
             <div>
-              <h4 className="text-xl font-bold tracking-wider text-white uppercase mb-5 mt-10">Company</h4>
+              <h4 className="text-xl font-bold tracking-wider text-red-500 uppercase mb-5 mt-10">Company</h4>
               <ul className="space-y-4">
                 {footerLinks.company.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="text-slate-400 hover:text-red-500 text-sm transition-colors flex items-center gap-2 group py-1">
+                    <Link href={link.href} className="text-slate-400 hover:text-white text-sm transition-colors flex items-center gap-2 group py-1">
                       <ArrowRight size={12} className="hidden sm:inline-block opacity-0 group-hover:opacity-100 transition-all -ml-4 group-hover:ml-0" />
                       {link.name}
                     </Link>
@@ -83,11 +84,11 @@ const Footer = () => {
             </div>
 
             <div>
-              <h4 className="text-xl font-bold tracking-wider text-white uppercase mb-5 mt-10">Support</h4>
+              <h4 className="text-xl font-bold tracking-wider text-red-500 uppercase mb-5 mt-10">Support</h4>
               <ul className="space-y-4">
                 {footerLinks.support.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="text-slate-400 hover:text-red-500 text-sm transition-colors flex items-center gap-2 group py-1">
+                    <Link href={link.href} className="text-slate-400 hover:text-white text-sm transition-colors flex items-center gap-2 group py-1">
                       <ArrowRight size={12} className="hidden sm:inline-block opacity-0 group-hover:opacity-100 transition-all -ml-4 group-hover:ml-0" />
                       {link.name}
                     </Link>
@@ -100,7 +101,7 @@ const Footer = () => {
           {/* CONTACT SECTION (Stacks beautifully underneath links on mobile layouts) */}
           <div className="md:col-span-2 lg:col-span-4">
             <div className="bg-white/2 p-6 sm:p-8 rounded-3xl border border-white/5 shadow-2xl backdrop-blur-sm">
-              <h4 className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-5">Get In Touch</h4>
+              <h4 className="text-xs font-bold tracking-widest text-red-500 uppercase mb-5">Get In Touch</h4>
               <ul className="space-y-4">
                 <li className="flex items-start gap-4">
                   <div className="bg-red-500/10 p-2.5 rounded-xl shrink-0 mt-0.5">
