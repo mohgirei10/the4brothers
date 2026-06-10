@@ -22,7 +22,7 @@ const CeoHero = () => {
   return (
     <section className="max-w-7xl mx-auto px-6 mb-32">
     
-      <div className="grid md:grid-cols-12 gap-8 items-stretch">
+     <div className="grid mt-8 md:grid-cols-12 gap-8 items-stretch">
         
         {/* CEO IMAGE - Left Column */}
         <motion.div 
@@ -35,7 +35,7 @@ const CeoHero = () => {
           <div className="rounded-[48px] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border-[6px] border-white">
             <img 
               src="ceo.png" 
-              alt="CEO" 
+              alt="Muhammad Inuwa Bassi" 
               className="aspect-4/5 w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-110"
             />
           </div>
@@ -46,7 +46,7 @@ const CeoHero = () => {
             </div>
             <div>
               <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Leadership</p>
-              <p className="text-sm font-bold uppercase text-slate-900">Visionary Founder</p>
+              <p className="text-sm uppercase font-bold text-slate-900">CEO & Founder</p>
             </div>
           </div>
         </motion.div>
@@ -62,11 +62,11 @@ const CeoHero = () => {
           <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 rounded-full blur-[100px]"></div>
 
           <header className="relative z-10 mb-8">
-            <span className="text-red-500 font-black text-xs uppercase tracking-[0.4em] mb-6 block">The CEO & Founder</span>
-            <h2 className="text-5xl lg:text-7xl uppercase font-black text-transparent bg-clip-text bg-linear-to-r from-white to-slate-500 leading-[0.9] tracking-tighter mb-4">
-              Muhammad <br /> 
+            <span className="text-red-500 font-black text-xs uppercase tracking-[0.4em] mb-6 block">Managing Director</span>
+            <h2 className="text-5xl lg:text-7xl font-black uppercase text-white leading-[0.9] tracking-tighter mb-4">
+Muhammad<br /> 
               <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-slate-500">
-                Inuwa <br /> Bassi
+                Inuwa Bassi
               </span>
             </h2>
             <div className="h-1 w-20 bg-red-600 rounded-full"></div>
@@ -74,12 +74,11 @@ const CeoHero = () => {
 
           <div className="space-y-6 relative z-10">
             <p className="text-xl font-bold tracking-tighter italic text-slate-300 border-l-2 border-red-600 pl-4">
-          A Farmer & Businessman   
-         </p>
-            <p className="text-lg text-slate-500 leading-relaxed font-medium">
-Inuwa Bassi is the visionary Founder and CEO of 4Brothers Transport & Logistics. Dedicated his career to mastering the complexities of the West African supply chain.
-Driven by the core philosophy that logistics is the backbone of regional prosperity, he established 4Brothers to bridge the gap between industrial scale and personal reliability.
-             </p>
+              Farmer & Businessman
+            </p>
+            <p className="text-lg text-slate-400 leading-relaxed font-medium">
+Inuwa Bassi is the visionary Founder and CEO of 4Brothers Transport & Logistics. Dedicated his career to mastering the complexities of the West African supply chain. Driven by the core philosophy that logistics is the backbone of regional prosperity, he established 4Brothers to bridge the gap between industrial scale and personal reliability.
+            </p>
             
             <div className="pt-8">
               <a 
@@ -206,7 +205,7 @@ const AboutPage = () => {
             Established 2026
           </motion.span>
           
-          <h1 className="text-6xl md:text-9xl font-black text-slate-950 tracking-[-0.06em] leading-[0.85] mb-12">
+          <h1 className="text-6xl md:text-9xl font-black text-blue-950 tracking-[-0.06em] leading-[0.85] mb-12">
             Moving <span className="text-red-600">Nigeria</span> <br /> 
             With <span className="relative inline-block">
               Purpose
@@ -221,17 +220,17 @@ const AboutPage = () => {
           </p>
 
           {/* Centered Address Badge */}
-          <motion.a 
-            href="https://www.google.com/maps/search/?api=1&query=No+7+24+Crescent+2nd+Avenue+Guzape+Abuja"
-            target="_blank"
-            whileHover={{ scale: 1.02 }}
-            className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-8 py-4 shadow-sm hover:border-red-600 hover:shadow-xl transition-all group"
-          >
-            <MapPin className="text-red-600 group-hover:scale-125 transition-transform" size={20} />
-            <span className="text-sm font-black uppercase tracking-widest text-slate-600">
-    No. 7, 24 Crescent 2nd Avenue, Federal Housing Authority, Guzape, Abuja.
-            </span>
-          </motion.a>
+    <a 
+      href="https://www.google.com/maps/search/?api=1&query=No+7+24+Crescent+2nd+Avenue+Guzape+Abuja"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mx-auto flex w-fit items-center gap-3 rounded-full border border-slate-200 px-6 py-3 mb-8 shadow-sm hover:border-red-400 hover:bg-red-50/30 transition-all group"
+    >
+      <MapPin className="text-red-600 group-hover:scale-110 transition-transform" size={18} />
+      <span className="text-sm font-bold uppercase tracking-tight text-slate-600">
+        No. 7, 24 Crescent 2nd Avenue, Federal Housing Authority, Abuja
+      </span>
+    </a>
         </motion.div>
       </section>
 
@@ -288,40 +287,30 @@ const AboutPage = () => {
 
           <FAQ />
 
-      {/* 6. FINAL CTA */}
-    <section className="max-w-5xl mx-auto px-6 pb-40">
-          <div className="bg-slate-950 rounded-[80px] p-16 md:p-32 text-center relative overflow-hidden border border-white/5 shadow-2xl">
-            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
-            
-            <h2 className="text-6xl md:text-8xl font-black text-white mb-12 tracking-tighter leading-[0.85] relative z-10">
-              <span className="text-red-600">Ready</span> to <br /> Scale <span className="text-red-600">Up?</span>
-            </h2>
-              <h4 className="text-3xl text-red-600 font-bold mb-10">Get <span className="text-white">In</span> Touch</h4>
-        {/* 1. SOCIAL ICONS CONTAINER: Centered on top */}
-      <div className="flex justify-center items-center gap-4 mb-10 relative z-10">
-        {[SiFacebook, SiInstagram, SiTiktok, SiWhatsapp].map((Icon, i) => (
-          <motion.a
-            key={i}
-            whileHover={{ y: -5, backgroundColor: '#dc2626' }} // Hover to red-600
-            className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center transition-colors border border-white/10"
-            href="#"
-          >
-            <Icon size={20} className="text-white" />
-          </motion.a>
-        ))}
-      </div>
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="bg-red-600 text-white px-8 py-5 rounded-full font-black text-sm tracking-[0.3em] shadow-[0_20px_50px_rgba(220,38,38,0.3)] flex items-center gap-3 mx-auto uppercase relative z-10 hover:bg-red-700 transition-colors"
+          {/* 3. SOCIAL*/}
+        <section className="max-w-5xl mx-auto px-6 pb-24">
+            <div className="bg-slate-950 rounded-[80px] p-16 md:p-32 text-center relative overflow-hidden border border-white/5 shadow-2xl">
+              <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+              
+              <h2 className="text-6xl md:text-8xl font-black text-white mb-12 tracking-tighter leading-[0.85] relative z-10">
+                <span className="text-red-600">Ready</span> to <br /> Scale <span className="text-red-600">Up?</span>
+              </h2>
+                <h4 className="text-3xl text-red-600 font-bold mb-10">Connect <span className="text-white">With </span>Us</h4>
+          {/* 1. SOCIAL ICONS CONTAINER: Centered on top */}
+        <div className="flex justify-center items-center gap-4 mb-4 relative z-10">
+          {[SiFacebook, SiInstagram, SiTiktok, SiWhatsapp].map((Icon, i) => (
+            <motion.a
+              key={i}
+              whileHover={{ y: -5, backgroundColor: '#dc2626' }} 
+              className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center transition-colors border border-white/10"
+              href="#"
             >
-            <a     href="tel:+2348146007875" >
-                Contact Us
-              </a>
-              <ArrowRight size={20} />
-            </motion.button>
-          </div>
-        </section>
+              <Icon size={20} className="text-white" />
+            </motion.a>
+          ))}
+        </div>
+            </div>
+          </section>
       
     </main>
   );

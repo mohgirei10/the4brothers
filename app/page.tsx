@@ -11,7 +11,7 @@ const socialLinks = [
   { id: 1, name: "Instagram", icon: <SiInstagram />, link: "https://instagram.com/@the4brotherstransport", color: "rgb(225, 48, 108)" },
   { id: 3, name: "Facebook", icon: <SiFacebook />, link: "https://facebook.com/the4brotherstransport", color: "rgb(24, 119, 242)" },
   { id: 4, name: "WhatsApp", icon: <SiWhatsapp/>, link: "https://wa.me/2348146007875?text=Hello%204Brothers", color: 'rgb(59, 253, 0)' },
-  { id: 5, name: "TickTock", icon: <SiTiktok />, link: "https://ticktock.com/@the4brotherstransport", color: "rgb(1, 1, 1)" },
+  { id: 5, name: "TickTock", icon: <SiTiktok />, link: "https://ticktok.com/@the4brotherstransport", color: "rgb(1, 1, 1)" },
 ];
 import ImageCarousel from './components/ImageCarousel';
 import { motion, Variants } from 'framer-motion';
@@ -45,7 +45,7 @@ const itemVariants: Variants = {
     y: 0, 
     opacity: 1, 
     transition: { 
-      type: "spring", // Now TypeScript knows this is the specific "spring" type
+      type: "spring",
       stiffness: 100 
     } 
   }
@@ -72,20 +72,6 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
       {/* 2. HERO SECTION WITH PATTERNED BACKGROUND */}
    <section id="home" className="relative pt-32 pb-24 overflow-hidden min-h-[90vh] flex items-center ">
       
-      {/* --- PREMIUM DYNAMIC BACKGROUND --- */}
-      <div className="absolute inset-0 -z-20">
-        
-        {/* The 'Premium Fade' Overlay */}
-        {/* Goes from Solid White (left) to transparent (right), ensuring text readability */}
-        <div className="absolute inset-0 bg-linear-to-r from-white via-white/80 to-transparent" />
-        
-        {/* Vignette bottom shadow to blend with the next section */}
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-white to-transparent" />
-      </div>
-
-      {/* Legacy Decorative Grid (reduced opacity) */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[40px_40px] opacity-10" />
-
       {/* --- CONTENT --- */}
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center relative z-10">
         
@@ -119,7 +105,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
               href={`https://wa.me/2348146007875?text=${encodeURIComponent("Hello 4Brothers, I'm interested in your logistics services and would like to get a quote.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.03, backgroundColor: '#1d4ed8' }} // Hover to blue-700
+              whileHover={{ scale: 1.03, backgroundColor: '#1d4ed8' }} 
               whileTap={{ scale: 0.98 }}
               className="w-full bg-red-600 text-white font-black px-10 py-5 rounded-full transition-all shadow-2xl shadow-red-200 flex items-center justify-center gap-2 uppercase tracking-[0.2em] text-lg group"
             >
@@ -139,12 +125,11 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
           <div className="rounded-[60px] overflow-hidden shadow-[0_60px_120px_-20px_rgba(30,58,138,0.2)] border-16 border-red-600 relative z-10 bg-white">
               {/* Assuming <ImageCarousel /> is defined elsewhere */}
               <div className="w-full aspect-4/3 bg-slate-100 flex items-center justify-center text-slate-400">
-                                     <ImageCarousel />
-</div>
+    <ImageCarousel />
+           </div>
           </div>
           
           {/* --- REFINED FLOATING TRUST BADGE --- */}
-          {/* Moved down slightly and integrated better with the main border */}
           <motion.div 
             animate={{ y: [0, -12, 0] }} 
             transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
@@ -165,20 +150,21 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
       
        <BookingForm />
 
+      {/* 3. SOCIAL*/}
     <section className="max-w-5xl mx-auto px-6 pb-24">
-        <div className="bg-slate-950 rounded-[80px] p-16 md:p-32 text-center relative overflow-hidden border border-white/5 shadow-2xl">
+        <div className="bg-slate-900 rounded-[80px] p-16 md:p-32 text-center relative overflow-hidden border border-white/5 shadow-2xl">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
           
-          <h2 className="text-6xl md:text-8xl font-black text-white mb-12 tracking-tighter leading-[0.85] relative z-10">
+          <h2 className="text-6xl md:text-7xl font-black text-white mb-12 tracking-tighter leading-[0.85] relative z-10">
             <span className="text-red-600">Ready</span> to <br /> Scale <span className="text-red-600">Up?</span>
           </h2>
-            <h4 className="text-3xl text-red-600 font-bold mb-10">Get <span className="text-white">In</span> Touch</h4>
+            <h4 className="text-3xl text-red-600 font-black mb-10">Connect <span className="text-white">With </span>Us</h4>
       {/* 1. SOCIAL ICONS CONTAINER: Centered on top */}
-    <div className="flex justify-center items-center gap-4 mb-10 relative z-10">
+    <div className="flex justify-center items-center gap-4 mb-4 relative z-10">
       {[SiFacebook, SiInstagram, SiTiktok, SiWhatsapp].map((Icon, i) => (
         <motion.a
           key={i}
-          whileHover={{ y: -5, backgroundColor: '#dc2626' }} // Hover to red-600
+          whileHover={{ y: -5, backgroundColor: '#dc2626' }} 
           className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center transition-colors border border-white/10"
           href="#"
         >
@@ -186,16 +172,6 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
         </motion.a>
       ))}
     </div>
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            className="bg-red-600 text-white px-8 py-5 rounded-full font-black text-sm tracking-[0.3em] shadow-[0_20px_50px_rgba(220,38,38,0.3)] flex items-center gap-3 mx-auto uppercase relative z-10 hover:bg-red-700 transition-colors"
-          >
-            <a     href="tel:+2348146007875" >
-              Contact Us
-            </a>
-            <ArrowRight size={20} />
-          </motion.button>
         </div>
       </section>
 
@@ -210,7 +186,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 >
   <MapPin className="text-red-600 group-hover:scale-110 transition-transform" size={18} />
   <span className="text-sm font-bold uppercase tracking-tight text-slate-600">
-    No. 7, 24 Crescent 2nd Avenue, Federal Housing Authority, Guzape,Abuja
+    No. 7, 24 Crescent 2nd Avenue, Federal Housing Authority, Abuja
   </span>
 </a>
 </div>
@@ -275,7 +251,7 @@ Contact Us  </span>
       </section>
 
       {/* 4. ABOUT SECTION - THE STORY & TRUST */}
-      <section id="about" className="py-32 relative overflow-hidden bg-slate-950">
+   <section id="about" className="py-32 relative overflow-hidden bg-slate-950">
   <div className="max-w-7xl mx-auto px-6">
     <div className="grid lg:grid-cols-2 gap-20 items-center">
       
@@ -355,7 +331,7 @@ Contact Us  </span>
       </section>
 
       {/* 5. CONTACT & INQUIRY SECTION */}
-      <section id="contact" className="py-32 bg-white">
+  <section id="contact" className="py-32 bg-white">
   <div className="max-w-7xl mx-auto px-6">
     <div className="grid lg:grid-cols-2 gap-16 items-start">
       
@@ -366,11 +342,8 @@ Contact Us  </span>
         viewport={{ once: true }}
         variants={containerVariants}
       >
-        <motion.span variants={itemVariants} className="text-red-600 font-black text-xs uppercase tracking-[0.4em] mb-6 block">
-          Get in Touch
-        </motion.span>
         <motion.h2 variants={itemVariants} className="text-5xl font-black text-blue-950 mb-8 tracking-tighter">
-         <span className="text-red-600">4</span>Brothers offers a <span className="text-red-600">reliable</span>,  <span className="text-red-600">fast</span>, <br /> and <span className="text-red-600">budget-friendly</span> services.
+         <span className="text-red-600">4</span>BROTHERS offers a <span className="text-red-600">reliable</span>,  <span className="text-red-600">fast</span>, <br /> and <span className="text-red-600">budget-friendly</span> services.
         </motion.h2>
         <motion.p variants={itemVariants} className="text-lg text-slate-500 font-medium mb-12 max-w-md">
           Have a question about our rates or need a custom logistics plan? Our team is standing by to help.
@@ -406,8 +379,11 @@ Contact Us  </span>
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="bg-slate-950 p-10 lg:p-14 rounded-[48px] shadow-2xl relative overflow-hidden"
+        className="bg-slate-950 p-8 lg:p-14 rounded-[48px] shadow-2xl relative overflow-hidden"
       >
+        <span className="text-red-600 font-black text-xs uppercase tracking-[0.4em] mb-6 block">
+          Get in Touch
+        </span>
         {/* Background Glow */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-slate-950 rounded-full  -translate-y-1/2 translate-x-1/2" />
         
@@ -452,7 +428,7 @@ Contact Us  </span>
 
     </div>
   </div>
-      </section>
+  </section>
 
     </div>
   );

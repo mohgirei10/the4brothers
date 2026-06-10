@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Package, Weight, Send } from 'lucide-react';
+import { MapPin, Package, Weight, Send, Car } from 'lucide-react';
 
 const BookingForm = () => {
   const [formData, setFormData] = useState({
@@ -80,17 +80,20 @@ const BookingForm = () => {
               </select>
             </div>
 
-            {/* WEIGHT */}
-            <div className="space-y-2">
+ <div className="space-y-2">
               <label className="text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
-                <Weight size={14} className="text-slate-600" /> Est. Weight (KG)
+                <Car size={14} className="text-green-600" /> Vehicle Type
               </label>
-              <input 
-                type="number" 
-                placeholder="Optional"
-                className="w-full bg-slate-50 border border-slate-200 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all"
-                onChange={(e) => setFormData({...formData, weight: e.target.value})}
-              />
+              <select 
+                className="w-full bg-slate-50 border border-slate-200 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-slate-700"
+                onChange={(e) => setFormData({...formData, type: e.target.value})}
+              >
+                <option>Motorcycle (Rider)</option>
+                <option>Tricycle</option>
+                 <option>Van</option>
+                 <option>Lorry</option>
+
+              </select>
             </div>
           </div>
 
@@ -98,7 +101,7 @@ const BookingForm = () => {
             type="submit"
             className="w-full bg-red-600 hover:bg-red-700 text-white hover:cursor-pointer p-5 rounded-2xl font-black text-lg shadow-xl shadow-red-200/50 transition-all transform hover:scale-[1.02] flex justify-center items-center gap-3 mt-4"
           >
-            Get Instant Quote on WhatsApp <Send size={20} />
+          Instant Quote<Send size={20} />
           </button>
         </motion.form>
       </div>
