@@ -71,6 +71,23 @@ export default function AdminDashboard() {
     };
   }, []);
 
+// Make sure these are defined ONLY ONCE
+const handleAutoAssign = async (order: any) => {
+  const { data: rider } = await supabase.rpc('find_nearest_rider', { 
+    pickup_lat: 9.0765, 
+    pickup_long: 7.3986 
+  });
+
+  if (!rider || rider.length === 0) return alert("No online drivers nearby!");
+  
+  await supabase.from('deliveries').update({ status: 'assigned', rider_id: rider[0].rider_id }).eq('id', order.id);
+};
+
+const updateDeliveryStatus = async (id: string, newStatus: string) => {
+  const { error } = await supabase.from('deliveries').update({ status: newStatus }).eq('id', id);
+  if (error) alert("Error updating status: " + error.message);
+};
+
   return (
     <div className="min-h-screen bg-slate-950 text-white p-6 md:p-12 font-sans">
       <header className="mb-10 mt-10 flex justify-between items-center border-b border-white/10 pb-6">
@@ -124,15 +141,54 @@ export default function AdminDashboard() {
                 <p className="text-slate-500">No pending orders in the queue.</p>
               </div>
             ) : (
-              <ul className="space-y-4">
-                {deliveries.map((order) => (
-                  <li key={order.id} className="bg-white/5 p-4 rounded-xl border border-white/5">
-                    <p className="font-bold text-sm">Pickup: <span className="font-normal text-slate-300">{order.pickup_address}</span></p>
-                    <p className="font-bold text-sm mt-1">Dropoff: <span className="font-normal text-slate-300">{order.dropoff_address}</span></p>
-                    <p className="text-green-400 font-bold mt-3">₦{order.price.toLocaleString()}</p>
-                  </li>
-                ))}
-              </ul>
+             <ul className="space-y-4">
+  {deliveries.map((order) => (
+    <li key={order.id} className="bg-white/5 p-4 rounded-xl border border-white/5 shadow-sm">
+      <div className="flex justify-between items-start">
+        <div>
+          <p className="font-bold text-sm">Pickup: <span className="font-normal text-slate-300">{order.pickup_address}</span></p>
+          <p className="font-bold text-sm mt-1">Dropoff: <span className="font-normal text-slate-300">{order.dropoff_address}</span></p>
+          <p className="text-green-400 font-bold mt-3">₦{order.price.toLocaleString()}</p>
+        </div>
+        
+        {/* Status Badge */}
+        <span className="text-[10px] uppercase font-bold bg-slate-800 px-2 py-1 rounded">
+          {order.status}
+        </span>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="mt-4 flex gap-2">
+        {order.status === 'pending' && (
+          <button 
+            onClick={() => handleAutoAssign(order)}
+            className="bg-blue-600 hover:bg-blue-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-all"
+          >
+            Auto-Assign
+          </button>
+        )}
+
+        {order.status === 'assigned' && (
+          <button 
+            onClick={() => updateDeliveryStatus(order.id, 'in_transit')}
+            className="bg-green-600 hover:bg-green-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-all"
+          >
+            Mark Picked Up
+          </button>
+        )}
+
+        {order.status === 'in_transit' && (
+          <button 
+            onClick={() => updateDeliveryStatus(order.id, 'delivered')}
+            className="bg-purple-600 hover:bg-purple-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-all"
+          >
+            Mark Delivered
+          </button>
+        )}
+      </div>
+    </li>
+  ))}
+</ul>
             )}
           </div>
 
