@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import connectToDatabase from '@/lib/mongodb';
+import connectToDatabase from '@/lib/supabase';
 import Shipment from '@/models/Shipment';
-import clientPromise from '@/lib/mongodb';
+import clientPromise from '@/lib/supabase';
 
 // Notice the 'await params' below
 export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {

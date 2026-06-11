@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import Shipment from "@/models/Shipment";
-import clientPromise from '@/lib/mongodb';
+import clientPromise from '@/lib/supabase';
 export async function GET() {
   try {
 const client = await clientPromise;

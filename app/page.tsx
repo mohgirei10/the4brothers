@@ -27,7 +27,6 @@ import {
 import React from "react";
 import Link from 'next/link';
 import BookingForm from "./components/BookingForm";
-import FleetGallery from "./components/FleetGallery";
 
 const PremiumLogisticsUI = () => {
   // Animation Variants
@@ -107,7 +106,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
               rel="noopener noreferrer"
               whileHover={{ scale: 1.03, backgroundColor: '#1d4ed8' }} 
               whileTap={{ scale: 0.98 }}
-              className="w-[70%] bg-red-600 text-white font-black px-10 py-5 rounded-full transition-all shadow-2xl shadow-red-200 flex items-center justify-center gap-2 uppercase tracking-[0.2em] text-lg group"
+              className="w-[60%] bg-red-600 text-white font-black px-5 py-5 rounded-full transition-all shadow-2xl shadow-red-200 flex items-center justify-center gap-2 uppercase tracking-tighter text-lg group"
             >
               Book Now <ChevronRight size={22} className="group-hover:translate-x-1 transition-transform" />
             </motion.a>
@@ -152,7 +151,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
       {/* 3. SOCIAL*/}
     <section className="max-w-5xl mx-auto px-6 pb-24 mt-12">
-        <div className="bg-slate-900 rounded-[80px] p-16 md:p-32 text-center relative overflow-hidden border border-white/5 shadow-2xl">
+        <div className="bg-slate-900 rounded-[50px] p-16 md:p-32 text-center relative overflow-hidden border border-white/5 shadow-2xl">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
           
           <h2 className="text-6xl md:text-7xl font-black text-white mb-12 tracking-tighter leading-[0.85] relative z-10">
