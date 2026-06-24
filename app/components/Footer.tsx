@@ -70,7 +70,7 @@ const Footer = () => {
           {/* LINKS SECTION (Two structural columns on mobile, clean columns on desktop) */}
           <div className="lg:col-span-4 grid grid-cols-2 gap-8 sm:gap-6">
             <div>
-              <h4 className="text-xl font-bold tracking-wider text-red-500 uppercase mb-5 mt-10">Company</h4>
+              <h4 className="text-xl font-bold tracking-wider text-red-600 uppercase mb-5 mt-10">Company</h4>
               <ul className="space-y-4">
                 {footerLinks.company.map((link) => (
                   <li key={link.name}>
@@ -84,7 +84,7 @@ const Footer = () => {
             </div>
 
             <div>
-              <h4 className="text-xl font-bold tracking-wider text-red-500 uppercase mb-5 mt-10">Support</h4>
+              <h4 className="text-xl font-bold tracking-wider text-red-600 uppercase mb-5 mt-10">Support</h4>
               <ul className="space-y-4">
                 {footerLinks.support.map((link) => (
                   <li key={link.name}>
@@ -101,11 +101,11 @@ const Footer = () => {
           {/* CONTACT SECTION (Stacks beautifully underneath links on mobile layouts) */}
           <div className="md:col-span-2 lg:col-span-4">
             <div className="bg-white/2 p-6 sm:p-8 rounded-3xl border border-white/5 shadow-2xl backdrop-blur-sm">
-              <h4 className="text-xs font-bold tracking-widest text-red-500 uppercase mb-5">Get In Touch</h4>
+              <h4 className="text-xs font-black tracking-widest text-red-600 uppercase mb-5">Get In Touch</h4>
               <ul className="space-y-4">
                 <li className="flex items-start gap-4">
                   <div className="bg-red-500/10 p-2.5 rounded-xl shrink-0 mt-0.5">
-                    <MapPin className="text-red-500" size={16} />
+                    <MapPin className="text-red-600" size={16} />
                   </div>
                   <span className="text-sm text-slate-300 leading-relaxed">
                     Federal Housing Authority, Guzape, Abuja, Nigeria.
@@ -114,7 +114,7 @@ const Footer = () => {
                 <li className="flex items-center gap-4">
                   <a href="tel:+2348146007875" className="flex items-center gap-4 group w-full py-0.5">
                     <div className="bg-red-500/10 p-2.5 rounded-xl shrink-0 transition-colors group-hover:bg-red-500/20">
-                      <Phone className="text-red-500" size={16} />
+                      <Phone className="text-red-600" size={16} />
                     </div>
                     <span className="text-sm text-slate-300 tracking-wide group-hover:text-white transition-colors">
                       +234 814 600 7875 <br />
@@ -126,7 +126,7 @@ const Footer = () => {
                 <li className="flex items-center gap-4">
                   <a href="mailto:4brotherstransportandlogistic@gmail.com" className="flex items-center gap-4 group w-full py-0.5 min-w-0">
                     <div className="bg-red-500/10 p-2.5 rounded-xl shrink-0 transition-colors group-hover:bg-red-500/20">
-                      <Mail className="text-red-500" size={16} />
+                      <Mail className="text-red-600" size={16} />
                     </div>
                     <span className="text-sm text-slate-300 break-all sm:break-normal truncate group-hover:text-white transition-colors">
                       4brotherstransportandlogistic@gmail.com
@@ -152,7 +152,7 @@ const Footer = () => {
                 href="https://mohgirei10.github.io/"
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-red-500 hover:text-red-400 font-semibold transition-colors duration-200 underline underline-offset-4 inline-block"
+                className="text-red-600 hover:text-red-400 font-semibold transition-colors duration-200 underline underline-offset-4 inline-block"
               >
                 Adamu Muhammed Girei
               </a>
@@ -161,7 +161,7 @@ const Footer = () => {
 
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-xs font-bold text-red-500 hover:text-red-400 uppercase tracking-widest transition-colors flex items-center gap-2 group py-2 px-4 rounded-full bg-white/5 lg:bg-transparent"
+            className="text-xs font-bold text-red-600 hover:text-red-200 uppercase tracking-widest transition-colors flex items-center gap-2 group py-2 px-4 rounded-full bg-white/5 lg:bg-transparent"
           >
             Back to top
             <motion.div

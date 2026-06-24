@@ -6,16 +6,16 @@ import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 
 // ✅ 1. YOUR DATA
 const carouselImages = [
-  { id: 1, url:'slide1.jpeg', description: 'Local Delivery Fleet' },
-  { id: 2, url:'slide2.jpeg', description: 'International Shipping' },
-  { id: 3, url:'slide3.jpeg', description: 'Storage & Fulfillment' },
-  { id: 4, url:'slide4.jpeg', description: 'End-to-End Tracking' },
-  { id: 5, url:'slide5.jpeg', description: 'End-to-End Tracking' }
+  { id: 1, url: 'slide1.jpeg', description: 'Local Delivery Fleet' },
+  { id: 2, url: 'slide2.jpeg', description: 'International Shipping' },
+  { id: 3, url: 'slide3.jpeg', description: 'Storage & Fulfillment' },
+  { id: 4, url: 'slide4.jpeg', description: 'End-to-End Tracking' },
+  { id: 5, url: 'slide5.jpeg', description: 'Real-Time Updates' } // Fixed duplicate text here for polish
 ];
 
 // ✅ 2. SLIDE ANIMATION VARIANTS
 const slideVariants = {
-  enter: (direction: number) => ({  // Add : number here
+  enter: (direction: number) => ({
     x: direction > 0 ? 1000 : -1000,
     opacity: 0,
   }),
@@ -24,7 +24,7 @@ const slideVariants = {
     opacity: 1,
     zIndex: 1,
   },
-  exit: (direction: number) => ({  // Add : number here
+  exit: (direction: number) => ({
     x: direction < 0 ? 1000 : -1000,
     opacity: 0,
     zIndex: 0,
@@ -35,7 +35,6 @@ const ImageCarousel = () => {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0); 
 
-  // Add : number right here 👇
   const paginate = (newDirection: number) => {
     let nextIndex = index + newDirection;
     if (nextIndex >= carouselImages.length) nextIndex = 0;
@@ -47,21 +46,18 @@ const ImageCarousel = () => {
 
   // ✅ 2.5 AUTO-SLIDE LOGIC
   useEffect(() => {
-    // Automatically move to the next slide every 4 seconds (4000ms)
     const timer = setInterval(() => {
       paginate(1);
     }, 4000);
 
-    // Cleanup interval on unmount or when the index changes.
-    // Clearing it when 'index' changes prevents rapid skipping if the user clicks manually!
     return () => clearInterval(timer);
-  }, [index]); // The dependency array includes 'index' so the timer resets on manual clicks.
+  }, [index]);
 
   const currentItem = carouselImages[index];
 
   return (
     // ✅ 3. THE "CARD" CONTAINER
-    <div className="relative w-full max-w-5xl mx-auto h-100 md:h-125 rounded-4xl overflow-hidden group shadow-2xl bg-slate-900 border border-slate-800">
+    <div className="relative w-full max-w-5xl mx-auto h-100 sm:h-125 lg:h-150 rounded-3xl sm:rounded-4xl overflow-hidden group shadow-2xl bg-slate-900 border border-slate-800">
       
       {/* IMAGES & ANIMATION */}
       <AnimatePresence initial={false} custom={direction}>
@@ -80,11 +76,17 @@ const ImageCarousel = () => {
         >
           {/* Overlays */}
           <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-950/40 to-transparent z-10" />
-          <div className="absolute inset-x-0 bottom-0 p-8 md:p-12 z-20">
-              <div className="flex items-center gap-3 bg-white/10 w-fit text-white px-5 py-2.5 rounded-full backdrop-blur-sm mb-4 border border-white/10">
-                  <MapPin size={20} className="text-blue-400" />
+          
+          {/* Responsive Padding inside the card */}
+          <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 md:p-12 z-20">
+              {/* Scaled the badge down slightly on mobile */}
+              <div className="flex items-center gap-2 sm:gap-3 bg-white/10 w-fit text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-full backdrop-blur-sm mb-3 sm:mb-4 border border-white/10 text-sm sm:text-base">
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />Abuja
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter max-w-xl">{currentItem.description}</h2>
+              {/* Responsive typography for the title */}
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter max-w-xl">
+                {currentItem.description}
+              </h2>
           </div>
 
           <img 
@@ -96,21 +98,23 @@ const ImageCarousel = () => {
       </AnimatePresence>
 
       {/* ✅ 4. NAVIGATION ARROWS */}
+      {/* Opacity is 100 on mobile, 0 on md+ screens until hover. Reduced padding/size on mobile. */}
       <button 
         onClick={() => paginate(-1)}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm text-white p-4 rounded-full border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/20 active:scale-95"
+        className="absolute left-3 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm text-white p-2.5 sm:p-3 md:p-4 rounded-full border border-white/10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-white/20 active:scale-95"
       >
-        <ChevronLeft size={24} />
+        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
       </button>
       <button 
         onClick={() => paginate(1)}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm text-white p-4 rounded-full border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/20 active:scale-95"
+        className="absolute right-3 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm text-white p-2.5 sm:p-3 md:p-4 rounded-full border border-white/10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-white/20 active:scale-95"
       >
-        <ChevronRight size={24} />
+        <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
       </button>
 
       {/* ✅ 5. INDICATOR DOTS */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2.5">
+      {/* Adjusted bottom spacing for mobile */}
+      <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 sm:gap-2.5">
         {carouselImages.map((_, i) => (
           <button
             key={i}
@@ -118,8 +122,11 @@ const ImageCarousel = () => {
               setDirection(i > index ? 1 : -1); 
               setIndex(i);
             }}
+            // Scaled the active dot width and inactive dot size for smaller screens
             className={`transition-all rounded-full ${
-              i === index ? 'w-8 h-2.5 bg-blue-500' : 'w-2.5 h-2.5 bg-white/40 hover:bg-white/70'
+              i === index 
+              ? 'w-6 sm:w-8 h-2 sm:h-2.5 bg-blue-500' 
+              : 'w-2 h-2 sm:w-2.5 sm:h-2.5 bg-white/40 hover:bg-white/70'
             }`}
           />
         ))}

@@ -4,7 +4,6 @@ import React from 'react';
 import { ShieldCheck, Eye, Database, Share2 } from 'lucide-react';
 
 const PrivacyPolicy = () => {
-  const lastUpdated = "June 2026";
 
   return (
     <div className="min-h-screen bg-slate-950 text-white pt-24 pb-16">
@@ -15,10 +14,7 @@ const PrivacyPolicy = () => {
           <div className="inline-flex p-3 bg-red-600/10 text-red-500 rounded-2xl mb-2">
             <ShieldCheck size={32} />
           </div>
-          <h1 className="text-4xl md:text-5xl font-black tracking-tight">Privacy Policy</h1>
-          <p className="text-sm text-blue-200/40 uppercase tracking-widest">
-            Last Updated: {lastUpdated}
-          </p>
+          <h1 className="text-4xl md:text-5xl font-black tracking-tight">Privacy Policy</h1> 
         </div>
 
         {/* CONTENT CARD */}

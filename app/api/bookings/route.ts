@@ -1,31 +1,30 @@
 import { NextResponse } from 'next/server';
-import clientPromise from "@/lib/supabase";
-import mongoose from 'mongoose';
-
-// Define a simple schema inline or import it
-const BookingSchema = new mongoose.Schema({
-  pickup: String,
-  dropoff: String,
-  type: String,
-  weight: String,
-  createdAt: { type: Date, default: Date.now },
-});
-
-const Booking = mongoose.models.Booking || mongoose.model('Booking', BookingSchema);
+import { supabase } from "@/lib/supabase"; 
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const newLocal = await connectToDatabase();
     
-    const newBooking = await Booking.create(body);
+    const { data, error } = await supabase
+      .from('bookings')
+      .insert([
+        {
+          pickup: body.pickup,
+          dropoff: body.dropoff,
+          type: body.type,
+          weight: body.weight,
+        }
+      ])
+      .select();
+    if (error) {
+      console.error("==== SUPABASE ERROR ====", error);
+      return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+    }
     
-    return NextResponse.json({ success: true, data: newBooking }, { status: 201 });
-  } catch (error) {
-    return NextResponse.json({ success: false, error: 'Database Error' }, { status: 500 });
-  }
-}
+    return NextResponse.json({ success: true, data: data[0] }, { status: 201 });
 
-function connectToDatabase() {
-  throw new Error('Function not implemented.');
+  } catch (error) {
+    console.error("==== SERVER ERROR ====", error);
+    return NextResponse.json({ success: false, error: 'Internal Server Error' }, { status: 500 });
+  }
 }

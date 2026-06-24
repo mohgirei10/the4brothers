@@ -4,7 +4,6 @@ import React from 'react';
 import { ShieldCheck, FileText, Scale, AlertTriangle } from 'lucide-react';
 
 const TermsOfService = () => {
-  const lastUpdated = "June 2026";
 
   return (
     <div className="min-h-screen bg-slate-950 text-white pt-24 pb-16">
@@ -16,9 +15,6 @@ const TermsOfService = () => {
             <Scale size={32} />
           </div>
           <h1 className="text-4xl md:text-5xl font-black tracking-tight">Terms of Service</h1>
-          <p className="text-sm text-blue-200/40 uppercase tracking-widest">
-            Last Updated: {lastUpdated}
-          </p>
         </div>
 
         {/* CONTENT CARD */}

@@ -8,7 +8,7 @@ import Link from 'next/link';
 const faqs = [
   {
     question: "What areas do you cover?",
-    answer: "While our main hub is in Bwari, Abuja, we provide nationwide coverage across all 36 states in Nigeria, with dedicated daily routes to Lagos, Kano, and Port Harcourt."
+    answer: "While our main hub is in Garki, Abuja, we provide nationwide coverage across all 36 states in Nigeria, with dedicated daily routes to Lagos, Kano, and Port Harcourt."
   },
   {
     question: "How long does interstate delivery take?",
@@ -33,7 +33,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }: any) => {
     <div className="border-b border-slate-200">
       <button
         onClick={onClick}
-        className="w-full py-6 flex items-center justify-between text-left hover:text-blue-600 transition-colors"
+        className="w-full py-4 flex items-center justify-between text-left hover:text-blue-600 transition-colors"
       >
         <span className="text-lg font-bold text-blue-950">{question}</span>
         <div className={`p-1 rounded-full transition-transform duration-300 ${isOpen ? 'bg-red-600 text-white rotate-180' : 'bg-slate-100 text-slate-500'}`}>
@@ -66,7 +66,7 @@ const FAQ = () => {
 
   return (
     // Add scroll-mt-24 so the fixed navbar doesn't cover the title
-    <section id="faqs" className="py-32 bg-white scroll-mt-24"> 
+    <section id="faqs" className="py-12 bg-white scroll-mt-8"> 
       <div className="max-w-4xl mx-auto px-6">
         {/* ... rest of your FAQ code (HelpCircle, h2, map, etc.) ... */}
         
@@ -82,10 +82,7 @@ const FAQ = () => {
           ))}
         </div>
 
-        {/* Support CTA */}
-        <div className="mt-16 p-10 bg-slate-50 rounded-[40px] border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
-           {/* ... your CTA content ... */}
-        </div>
+    
       </div>
     </section>
   );

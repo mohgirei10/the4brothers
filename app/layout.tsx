@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar"; 
 import Footer from "./components/Footer";
+import { Providers } from './components/Providers';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,10 +15,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'The4Brothers | Premium Logistics & Transport Abuja',
   description: 'Reliable interstate and local delivery services based in Abuja, Nigeria.',
 }
+
 
 export default function RootLayout({
   children,
@@ -29,16 +31,17 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      
       <body className="min-h-full flex flex-col">
-        
-        <Navbar />
-    
-
-        {children}
-        <Footer/>
-        </body>
+        <Providers>
+          <Navbar />
+          
+          <main className="grow pt-12">
+            {children}
+          </main>
+          
+          <Footer/>
+        </Providers>
+      </body>
     </html>
   );
 }
-  

@@ -14,7 +14,6 @@ const DefaultIcon = L.icon({
 });
 L.Marker.prototype.options.icon = DefaultIcon;
 
-// Custom helper component to auto-center the map when data updates
 function RecenterMap({ center }: { center: [number, number] }) {
   const map = useMap();
   useEffect(() => {
@@ -30,24 +29,24 @@ interface LiveMapProps {
 }
 
 export default function LiveMap({ riders }: LiveMapProps) {
-  // Default map position: Abuja, Nigeria (or adjust to your primary operations base)
+  // Default map position: Abuja, Nigeria
   const defaultCenter: [number, number] = [9.0765, 7.3986];
 
-  // If we have active riders, center the map around the first online rider's coordinates
-  const activeRiderWithGPS = riders.find(r => r.current_latitude && r.current_longitude);
+  const activeRiderWithGPS = riders.find(r => r.latitude && r.longitude && r.is_online);
+  
   const mapCenter: [number, number] = activeRiderWithGPS 
-    ? [activeRiderWithGPS.current_latitude, activeRiderWithGPS.current_longitude]
+    ? [activeRiderWithGPS.latitude, activeRiderWithGPS.longitude]
     : defaultCenter;
 
   return (
-    <div className="w-full h-100 lg:h-125 rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative z-10">
+    /* FIXED: Swapped h-100/h-125 for explicit Tailwind arbitrary pixel heights */
+    <div className="w-full h-[400px] lg:h-[500px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative z-10">
       <MapContainer 
         center={mapCenter} 
         zoom={13} 
         scrollWheelZoom={true} 
         className="w-full h-full bg-slate-900"
       >
-        {/* Clean, dark-mode-friendly map tiles provided by CartoDB */}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
@@ -55,25 +54,33 @@ export default function LiveMap({ riders }: LiveMapProps) {
         
         <RecenterMap center={mapCenter} />
 
-        {/* Dynamic Markers for every online Rider */}
         {riders.map((rider) => {
-          if (!rider.current_latitude || !rider.current_longitude) return null;
+          if (!rider.latitude || !rider.longitude || !rider.is_online) return null;
           
           return (
             <Marker 
               key={rider.id} 
-              position={[rider.current_latitude, rider.current_longitude]}
+              position={[rider.latitude, rider.longitude]}
             >
               <Popup>
                 <div className="text-slate-900 font-sans p-1">
-                  <h3 className="font-bold border-b pb-1 mb-1 text-sm">{rider.full_name}</h3>
-                  <p className="text-xs text-slate-600">🚗 {rider.vehicle_type}</p>
-                  <p className="text-xs text-slate-600">📞 {rider.phone_number}</p>
-                  <span className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full inline-block mt-2 ${
-                    rider.status === 'online' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'
-                  }`}>
-                    {rider.status}
-                  </span>
+                  {/* FIXED: Added clear fallback string if full_name is null */}
+                  <h3 className="font-bold border-b pb-1 mb-1 text-sm">
+                    {rider.full_name || 'Unnamed Rider Logged In'}
+                  </h3>
+                  <p className="text-xs text-slate-600">🚗 {rider.vehicle_type || 'No Vehicle Specified'}</p>
+                  <p className="text-xs text-slate-600">📞 {rider.phone_number || 'No Phone Registered'}</p>
+                  
+                  <div className="mt-2 flex gap-1 flex-wrap">
+                    <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-green-100 text-green-800">
+                      Online
+                    </span>
+                    {rider.is_busy && (
+                      <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800">
+                        Busy
+                      </span>
+                    )}
+                  </div>
                 </div>
               </Popup>
             </Marker>

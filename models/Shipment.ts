@@ -1,24 +1,25 @@
-// import mongoose from 'mongoose';
+import { NextResponse } from 'next/server';
+import { supabase } from "@/lib/supabase"; 
 
-// const ShipmentSchema = new mongoose.Schema({
-//   trackingId: { 
-//     type: String, 
-//     required: true, 
-//     unique: true 
-//   },
-//   senderName: { type: String },
-//   pickupLocation: { type: String },
-//   dropoffLocation: { type: String },
-//   status: { 
-//     type: String, 
-//     enum: ['Picked Up', 'In Hub', 'In Transit', 'Delivered'],
-//     default: 'Picked Up'
-//   },
-//   currentLocation: { type: String },
-//   updatedAt: { type: Date, default: Date.now }
-// });
+export async function PATCH(request: Request) {
+  try {
+    const body = await request.json();
+    
+    const { data, error } = await supabase
+      .from('shipments')
+      .update({ 
+        current_location: body.location,
+        status: body.status,
+      })
+      .eq('tracking_id', body.trackingId) 
+      .select();
 
-// // This prevents Mongoose from creating the model twice during Next.js hot reloads
-// const Shipment = mongoose.models.Shipment || mongoose.model('Shipment', ShipmentSchema);
+    if (error) throw error;
+    
+    return NextResponse.json({ success: true, data: data[0] }, { status: 200 });
 
-// export default Shipment;
+  } catch (error: any) {
+    console.error("==== UPDATE ERROR ====", error);
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  }
+}
