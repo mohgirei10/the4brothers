@@ -76,12 +76,15 @@ const Navbar = () => {
               // Logged Out State
               <div className="flex items-center gap-3">
              <Link 
-  href="/login" 
-  className="flex items-center gap-2 text-xl border border-white font-medium text-gray-300 hover:text-white transition-colors px-3 py-2"
+  href="/signup" 
+  className="flex items-center gap-2 text-xl border bg-gray-900 rounded-2xl border-white font-medium text-gray-300 hover:text-white transition-colors px-3 py-2"
 >
   <span>Sign In</span>
   <User size={22} />
 </Link>
+ <a href={`tel:${phoneNumber}`} className="flex items-center justify-center bg-red-600 py-2 px-2 gap-2 border border-white rounded-xl font-dark text-xl text-white">
+              <Phone size={22} /> 
+            </a>
               </div>
             )}
           </div>
