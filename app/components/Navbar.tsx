@@ -25,11 +25,27 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         
         {/* Left Side: Logo */}
-        <div className="flex items-start py-0">
-          <Link href="/" className=" font-black tracking-tightest ">
-          <span className="text-xl font-light  text-blue-500">THE</span><span className="text-red-700 font-black z-50 text-3xl">4</span> <br /> <span className="text-white italic px-1  rounded-lg bg-red-700">BROTHERS</span>
-          <br />
-          <p className="text-[8px] font-light h-2 w-auto mb-2 "> TRANSPORT & LOGISTICS</p>
+        {/* Left Side: Logo */}
+        <div className="flex items-center">
+          <Link 
+            href="/" 
+            className="flex flex-col items-start justify-center leading-none hover:opacity-90 transition-opacity"
+          >
+            {/* Top Row: THE 4 */}
+            <div className="flex items-baseline mb-[-2px]">
+              <span className="text-lg font-light text-blue-500 tracking-tight">THE</span>
+              <span className="text-[2rem] font-black text-red-600 leading-none">4</span>
+            </div>
+            
+            {/* Middle Row: BROTHERS */}
+            <div className="bg-red-700 text-white font-black italic px-1.5 py-0.5 text-sm uppercase tracking-wide z-10 rounded-sm">
+              BROTHERS
+            </div>
+            
+            {/* Bottom Row: Subtitle */}
+            <span className="text-[8px] font-semibold text-slate-400 tracking-[0.2em] mt-1">
+              TRANSPORT & LOGISTICS
+            </span>
           </Link>
         </div>
 

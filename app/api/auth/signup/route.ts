@@ -11,21 +11,23 @@ export async function POST(request: Request) {
       password,
       options: {
         data: {
-          full_name: name, // Store the user's name in their user metadata
+          full_name: name,
         },
       },
     });
 
     if (error) {
-      return NextResponse.json({ message: error.message }, { status: 400 });
+      // DEBUG: Send the real Supabase auth error back to the UI
+      return NextResponse.json({ message: `Supabase Auth Error: ${error.message}` }, { status: 400 });
     }
 
     return NextResponse.json({ message: "User registered successfully", user: data.user }, { status: 201 });
- } catch (error) {
-    console.error("==== EXACT DATABASE ERROR ====", error); 
+  } catch (catchError: any) {
+    console.error("==== EXACT DATABASE ERROR ====", catchError); 
     
-    return Response.json(
-      { message: "Database error saving new user" },
+    // DEBUG: Send the exact code crash reason back to your phone screen
+    return NextResponse.json(
+      { message: `Server Crash Error: ${catchError?.message || 'Unknown code error'}` },
       { status: 500 }
     );
   }
