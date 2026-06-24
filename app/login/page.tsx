@@ -21,38 +21,30 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
     setError('');
 
-    const { data, error: authError } = await supabase.auth.signInWithPassword({
+    // USE NEXTAUTH INSTEAD OF SUPABASE DIRECTLY
+    const res = await signIn('credentials', {
+      redirect: false, // Prevents NextAuth from auto-redirecting so we can handle errors
       email,
       password,
     });
 
-    if (authError) {
-      setError(authError.message);
+    if (res?.error) {
+      setError(res.error);
       setLoading(false);
     } else {
       router.push('/');
+      router.refresh(); // Forces the Navbar to instantly update with the new session!
     }
   };
 
-    const handleGoogleLogin = async () => {
+  const handleGoogleLogin = async () => {
     setGoogleLoading(true);
     setError('');
     
-    const { data, error: googleError } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${window.location.origin}/`, 
-      }
-    });
-
-    if (googleError) {
-      console.error("Google login error:", googleError.message);
-      setError(googleError.message);
-      setGoogleLoading(false);
-    }
-await signIn('google', { callbackUrl: '/' });
+    // Let NextAuth handle the entire Google flow automatically
+    await signIn('google', { callbackUrl: '/' });
   };
-
+  
   return (
     <div className="flex justify-center items-center min-h-screen bg-slate-50 px-4 sm:px-6">
       <div className="w-full max-w-md p-8 sm:p-10 rounded-3xl bg-slate-950 shadow-2xl z-10">
