@@ -32,13 +32,13 @@ const Navbar = () => {
             className="flex flex-col items-start justify-center leading-none hover:opacity-90 transition-opacity"
           >
             {/* Top Row: THE 4 */}
-            <div className="flex items-baseline mb-[-2px]">
+            <div className="flex items-baseline -mb-0.5">
               <span className="text-lg font-light text-blue-500 tracking-tight">THE</span>
-              <span className="text-[2rem] font-black text-red-600 leading-none">4</span>
+              <span className="text-[2rem] font-black text-red-500 leading-none">4</span>
             </div>
             
             {/* Middle Row: BROTHERS */}
-            <div className="bg-red-700 text-white font-black italic px-1.5 py-0.5 text-sm uppercase tracking-wide z-10 rounded-sm">
+            <div className="bg-red-600 text-white font-black italic px-1.5 py-0.5 text-sm uppercase tracking-wide z-10 rounded-sm">
               BROTHERS
             </div>
             
