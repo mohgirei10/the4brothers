@@ -25,29 +25,36 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         
         {/* Left Side: Logo */}
-        {/* Left Side: Logo */}
-        <div className="flex items-center">
-          <Link 
-            href="/" 
-            className="flex flex-col items-start justify-center leading-none hover:opacity-90 transition-opacity"
-          >
-            {/* Top Row: THE 4 */}
-            <div className="flex items-baseline -mb-0.5">
-              <span className="text-lg font-light text-blue-500 tracking-tight">THE</span>
-              <span className="text-[2rem] font-black text-red-500 leading-none">4</span>
-            </div>
-            
-            {/* Middle Row: BROTHERS */}
-            <div className="bg-red-600 text-white font-black italic px-1.5 py-0.5 text-sm uppercase tracking-wide z-10 rounded-sm">
-              BROTHERS
-            </div>
-            
-            {/* Bottom Row: Subtitle */}
-            <span className="text-[8px] font-semibold text-slate-400 tracking-[0.2em] mt-1">
-              TRANSPORT & LOGISTICS
-            </span>
-          </Link>
-        </div>
+     <div className="flex items-center">
+  <Link 
+    href="/" 
+    // Added 'group' to trigger child animations, plus a bounce scale on the whole container
+    className="group flex flex-col items-start justify-center leading-none transition-all duration-300 ease-out hover:scale-105"
+  >
+    {/* Top Row: THE 4 */}
+    {/* Moved up slightly on hover */}
+    <div className="flex items-baseline -mb-1 relative z-0 transition-transform duration-300 group-hover:-translate-y-1">
+      <span className="text-xl font-light text-blue-500 italic tracking-tight transition-colors duration-300 group-hover:text-blue-400">THE</span>
+      
+      {/* BIGGER 4: Increased to 3.5rem, tighter line-height, scales up and rotates slightly on hover */}
+      <span className="text-[3rem] font-black text-red-500 italic leading-[0.8] drop-shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:text-red-400 origin-bottom-left ml-0.5">
+        4
+      </span>
+    </div>
+    
+    {/* Middle Row: BROTHERS */}
+    {/* Added shadow, slightly skews and brightens on hover */}
+    <div className="bg-red-600 text-white font-black italic mb-1 px-2 py-0.5 text-sm uppercase tracking-widest z-10 rounded-sm shadow-md transition-all duration-300 group-hover:bg-red-500 group-hover:shadow-red-500/40 group-hover:-skew-x-6">
+      BROTHERS
+    </div>
+    
+    {/* Bottom Row: Subtitle */}
+    {/* Letter spacing expands and brightens on hover */}
+    <span className="text-[8px] font-bold text-slate-400 tracking-[0.2em] mb-1.5 transition-all duration-300 group-hover:tracking-[0.3em] group-hover:text-slate-300">
+      TRANSPORT & LOGISTICS
+    </span>
+  </Link>
+</div>
 
         {/* DESKTOP NAV */}
         <div className="hidden lg:flex items-center gap-8">
@@ -61,7 +68,7 @@ const Navbar = () => {
                   item === 'FAQs' ? '/about#faqs' : 
                   `/#${item.toLowerCase()}`
                 }
-                className="text-xl font-medium text-slate-400 hover:text-white transition-colors duration-200"
+                className="text-xl font-medium text-slate-400 hover:text-white  transition-transform group-hover:-translate-y-1 duration-200"
               >
                 {item}
               </Link>
@@ -120,7 +127,7 @@ const Navbar = () => {
         animate={{ height: isMenuOpen ? 'auto' : 0, opacity: isMenuOpen ? 1 : 0 }}
         className="lg:hidden bg-slate-900 border-b border-white/10 overflow-hidden"
       >
-        <div className="flex flex-col p-8 gap-6">
+        <div className="flex flex-col p-4 gap-4">
           {['Home', 'Services', 'About', 'FAQs'].map((item) => (
             <Link
               key={item}
@@ -159,20 +166,20 @@ const Navbar = () => {
             </div>
           ) : (
             // Logged Out Mobile
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col p-4">
               <Link 
                 href="/login" 
                 onClick={() => setIsMenuOpen(false)}
-                className="w-full text-center border border-white/20 py-4 rounded-xl text-white font-bold"
-              >
-                Sign In
+ className="flex items-center justify-center gap-2 border p-4 rounded-2xl font-light text-sm text-white"> 
+            <User size={18}/> Sign In
               </Link>
             </div>
           )}
           
           {/* Contact Buttons */}
           <div className="grid grid-cols-2 gap-4 mt-2">
-            <a href={`tel:${phoneNumber}`} className="flex items-center justify-center gap-2 bg-red-600 p-4 rounded-2xl font-bold text-sm text-white">
+            <a href={`tel:${phoneNumber}`}
+             className="flex items-center justify-center gap-2 bg-red-600 p-4 rounded-2xl font-bold text-sm text-white">
               <Phone size={18} /> Call
             </a>
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-green-500 text-white p-4 rounded-2xl font-bold text-sm">

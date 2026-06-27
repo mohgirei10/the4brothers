@@ -329,11 +329,12 @@ Contact Us  </span>
 
       {/* 5. CONTACT & INQUIRY SECTION */}
   <section id="contact" className=" bg-white">
-    <div className="absolute  h-full w-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]  opacity-20"></div>
 
-  <div className="max-w-7xl mx-auto px-6">
+  <div className="max-w-7xl mx-auto px-4">
+    
     <div className="grid lg:grid-cols-2 gap-16 items-start">
-      
+        <div className="absolute left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]  opacity-20"></div>
+
       {/* Left Side: Contact Information */}
       <motion.div 
         initial="hidden"

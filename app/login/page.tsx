@@ -21,9 +21,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
     setError('');
 
-    // USE NEXTAUTH INSTEAD OF SUPABASE DIRECTLY
     const res = await signIn('credentials', {
-      redirect: false, // Prevents NextAuth from auto-redirecting so we can handle errors
+      redirect: false,
       email,
       password,
     });
@@ -33,7 +32,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       setLoading(false);
     } else {
       router.push('/');
-      router.refresh(); // Forces the Navbar to instantly update with the new session!
+      router.refresh();
     }
   };
 
@@ -41,7 +40,6 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setGoogleLoading(true);
     setError('');
     
-    // Let NextAuth handle the entire Google flow automatically
     await signIn('google', { callbackUrl: '/' });
   };
   

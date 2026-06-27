@@ -65,11 +65,25 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    // Add scroll-mt-24 so the fixed navbar doesn't cover the title
-    <section id="faqs" className="py-12 bg-white scroll-mt-8"> 
+    <section id="faqs" className="py-12 mt-2 bg-white scroll-mt-8"> 
+        <div className="text-center mb-20">
+                <motion.h2 
+                  initial={{ opacity: 0 }} 
+                  whileInView={{ opacity: 1 }} 
+                  className="text-xs font-black text-red-600 uppercase tracking-[0.4em] mb-6"
+                >
+4Brothers Transport And Logistics
+                </motion.h2>
+                <motion.h3 
+                  initial={{ opacity: 0, y: 20 }} 
+                  whileInView={{ opacity: 1, y: 0 }}
+                  className="text-4xl md:text-5xl font-black text-blue-950"
+                >
+                  Frequently Asked Questions
+                </motion.h3>
+              </div>
+
       <div className="max-w-4xl mx-auto px-6">
-        {/* ... rest of your FAQ code (HelpCircle, h2, map, etc.) ... */}
-        
         <div className="space-y-2">
           {faqs.map((faq, index) => (
             <FAQItem
