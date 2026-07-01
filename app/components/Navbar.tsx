@@ -28,11 +28,9 @@ const Navbar = () => {
      <div className="flex items-center">
   <Link 
     href="/" 
-    // Added 'group' to trigger child animations, plus a bounce scale on the whole container
     className="group flex flex-col items-start justify-center leading-none transition-all duration-300 ease-out hover:scale-105"
   >
     {/* Top Row: THE 4 */}
-    {/* Moved up slightly on hover */}
     <div className="flex items-baseline -mb-1 relative z-0 transition-transform duration-300 group-hover:-translate-y-1">
       <span className="text-xl font-light text-blue-500 italic tracking-tight transition-colors duration-300 group-hover:text-blue-400">THE</span>
       

@@ -149,12 +149,12 @@ const Footer = () => {
             <p className="text-slate-500 text-[11px] uppercase tracking-widest block">
               Designed & Developed by AMG-TECH —{" "}
               <a 
-                href="https://mohgirei10.github.io/"
+                href="https://mohgirei10.github.io/amg-tech/"
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-red-600 hover:text-red-400 font-semibold transition-colors duration-200 underline underline-offset-4 inline-block"
               >
-                Adamu Muhammed Girei
+                Adamu Mohammed Girei
               </a>
             </p>
           </div>
