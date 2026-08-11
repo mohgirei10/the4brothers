@@ -7,16 +7,17 @@ import Link from "next/link";
 import { SiWhatsapp } from "react-icons/si";
 import { useSession, signOut } from "next-auth/react";
 
-  const handleDownload = () => {
-    const link = document.createElement("a");
+const handleDownload = () => {
+  const link = document.createElement("a");
 
-    link.href = "/driver.apk";
-    link.download = "driver.apk";
+  link.href ="https://github.com/mohgirei10/the4brothers/releases/download/Driver/driver.apk" 
 
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  link.download = "4brothers.apk";
+
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -116,13 +117,13 @@ const Navbar = () => {
  
 </Link>
 
-              <button
-    onClick={handleDownload}
-  className="flex items-center gap-2 text-sm border bg-gray-900 rounded-2xl border-white/10 font-medium text-gray-300 hover:text-white transition-colors px-3 py-2"
-  >
-      <Download size={20} />
-    Download Driver App
-  </button>
+  <a
+    href="https://github.com/mohgirei10/the4brothers/releases/download/Driver/driver.apk" 
+  className="flex  items-center gap-2 text-sm border bg-gray-900 rounded-2xl border-white/10 font-medium text-gray-300 hover:text-white transition-colors px-3 py-2"
+>
+  <Download size={20} />
+   Driver App
+</a>
    <a href={`tel:${phoneNumber}`} className="flex items-center justify-center bg-red-600 py-1 px-2 gap-2 border border-white/10 rounded-xl font-dark text-sm text-white">
               <Phone size={22} /> 
   </a>
@@ -205,13 +206,14 @@ const Navbar = () => {
             </a>
           </div>
          <div className="flex flex-col items-center gap-4">
-  <button
-    onClick={handleDownload}
-    className="w-60 flex items-center  justify-center gap-1 border border-white/20 bg-gray-900 py-5 rounded-2xl text-white text-sm font-bold"
-  >
-      <Download size={20} />
-    Download Driver App
-  </button>
+  
+  <a
+  className="w-60 flex items-center  justify-center gap-1 border border-white/20 bg-gray-900 py-5 rounded-2xl text-white text-sm font-bold"
+  href="https://github.com/mohgirei10/the4brothers/releases/download/Driver/driver.apk" 
+>
+  <Download size={20} />
+   Driver App
+</a>
 </div>
         </div>
       </motion.div>
