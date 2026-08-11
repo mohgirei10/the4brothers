@@ -20,6 +20,9 @@
 # production
 /build
 
+# Android APK
+/public/*.apk
+
 # misc
 .DS_Store
 *.pem
@@ -39,3 +42,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+/public/driver.apk

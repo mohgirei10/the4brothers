@@ -74,7 +74,7 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     
     {/* LEFT COLUMN: Text & Interactive CTA */}
     <motion.div initial="hidden" animate="visible" variants={containerVariants}>
-      <motion.span variants={itemVariants} className="inline-block px-5 py-2 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.3em] mb-8 shadow-lg shadow-blue-200 border border-blue-500">
+      <motion.span variants={itemVariants} className="inline-block px-5 py-2 rounded-full bg-slate-950 text-blue-500 text-[10px] font-black uppercase tracking-[0.3em] mb-8 shadow-lg shadow-blue-200 border border-blue-500">
         Nationwide Logistics Partner
       </motion.span>
       
@@ -82,10 +82,10 @@ const [isMenuOpen, setIsMenuOpen] = React.useState(false);
         variants={itemVariants} 
         className="text-5xl md:text-7xl lg:text-[90px] font-black text-red-600 leading-[0.95] md:leading-[0.85] tracking-tighter"
       >
-        Fast. <br /><span className="text-blue-600">Reliable.</span>  <br/>
+        Fast. <br /><span className="text-slate-950">Reliable.</span>  <br/>
         <span className="relative inline-block text-red-600">
           On Time.
-          <svg className="absolute -bottom-2 left-0 w-full h-2 text-blue-600 mb-2" viewBox="0 0 100 10" preserveAspectRatio="none">
+          <svg className="absolute -bottom-2 left-0 w-full h-2 text-slate-950 mb-2" viewBox="0 0 100 10" preserveAspectRatio="none">
             <path d="M0 5 Q 50 0 100 5" stroke="currentColor" strokeWidth="4" fill="none"/>
           </svg>
         </span>

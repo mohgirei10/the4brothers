@@ -2,10 +2,21 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Phone, User, LogOut } from "lucide-react";
+import { Menu, X, Phone, User, LogOut, Download } from "lucide-react";
 import Link from "next/link";
 import { SiWhatsapp } from "react-icons/si";
 import { useSession, signOut } from "next-auth/react";
+
+  const handleDownload = () => {
+    const link = document.createElement("a");
+
+    link.href = "/driver.apk";
+    link.download = "driver.apk";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,6 +82,7 @@ const Navbar = () => {
                 {item}
               </Link>
             ))}
+   
           </div>
 
           {/* Divider */}
@@ -98,14 +110,22 @@ const Navbar = () => {
               <div className="flex items-center gap-3">
              <Link 
   href="/signup" 
-  className="flex items-center gap-2 text-xl border bg-gray-900 rounded-2xl border-white font-medium text-gray-300 hover:text-white transition-colors px-3 py-2"
->
-  <span>Sign In</span>
-  <User size={22} />
+  className="flex items-center gap-2 text-sm border bg-gray-900 rounded-2xl border-white/10 font-medium text-gray-300 hover:text-white transition-colors px-3 py-2"
+> <User size={20} />
+  <span>Sign Up</span>
+ 
 </Link>
- <a href={`tel:${phoneNumber}`} className="flex items-center justify-center bg-red-600 py-2 px-2 gap-2 border border-white rounded-xl font-dark text-xl text-white">
+
+              <button
+    onClick={handleDownload}
+  className="flex items-center gap-2 text-sm border bg-gray-900 rounded-2xl border-white/10 font-medium text-gray-300 hover:text-white transition-colors px-3 py-2"
+  >
+      <Download size={20} />
+    Download Driver App
+  </button>
+   <a href={`tel:${phoneNumber}`} className="flex items-center justify-center bg-red-600 py-1 px-2 gap-2 border border-white/10 rounded-xl font-dark text-sm text-white">
               <Phone size={22} /> 
-            </a>
+  </a>
               </div>
             )}
           </div>
@@ -131,7 +151,7 @@ const Navbar = () => {
               key={item}
               href={item === 'Home' ? '/' : item === 'About' ? '/about' : item === 'FAQs' ? '/about#faqs' : `/#${item.toLowerCase()}`}
               onClick={() => setIsMenuOpen(false)}
-              className="text-2xl text-white font-light uppercase"
+              className="text-2xl text-white font-bold"
             >
               {item}
             </Link>
@@ -148,7 +168,7 @@ const Navbar = () => {
               <Link 
                 href="/profile" 
                 onClick={() => setIsMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 border border-white/20 bg-gray-900 py-4 rounded-xl text-white font-bold"
+                className="w-full flex items-center justify-center gap-2 border border-white/10 bg-gray-900 py-4 rounded-xl text-white font-bold"
               >
                 <User size={18} /> Profile ({session.user.name?.split(' ')[0] || 'User'})
               </Link>
@@ -168,7 +188,7 @@ const Navbar = () => {
               <Link 
                 href="/login" 
                 onClick={() => setIsMenuOpen(false)}
- className="flex items-center justify-center gap-2 border p-4 rounded-2xl font-light text-sm text-white"> 
+ className="flex items-center justify-center gap-2 border border-white/10 p-4 rounded-2xl font-light text-sm text-white"> 
             <User size={18}/> Sign In
               </Link>
             </div>
@@ -184,6 +204,15 @@ const Navbar = () => {
               <SiWhatsapp size={18} /> WhatsApp
             </a>
           </div>
+         <div className="flex flex-col items-center gap-4">
+  <button
+    onClick={handleDownload}
+    className="w-60 flex items-center  justify-center gap-1 border border-white/20 bg-gray-900 py-5 rounded-2xl text-white text-sm font-bold"
+  >
+      <Download size={20} />
+    Download Driver App
+  </button>
+</div>
         </div>
       </motion.div>
     </nav>
